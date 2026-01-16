@@ -30,17 +30,17 @@
             justify-content: center;
         }
 
-        /* ГЛАВНЫЙ КОНТЕЙНЕР (СЕТКА) */
+        /* ГЛАВНЫЙ КОНТЕЙНЕР */
         .main-wrapper {
             width: 100%;
             max-width: 1100px;
             padding: 20px;
             display: flex;
-            flex-direction: column; /* По умолчанию колонка (для мобилок) */
+            flex-direction: column;
             gap: 30px;
         }
 
-        /* ЛЕВАЯ КОЛОНКА (ПРОФИЛЬ - ЗАКРЕПЛЕНА НА ПК) */
+        /* ЛЕВАЯ КОЛОНКА (ПРОФИЛЬ) */
         .profile-card {
             background: var(--card-bg);
             padding: 30px;
@@ -66,16 +66,16 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         }
 
-        /* АДАПТИВ ПОД ПК (ШИРИНА > 900px) */
+        /* АДАПТИВ ПОД ПК */
         @media (min-width: 900px) {
             .main-wrapper {
-                flex-direction: row; /* Две колонки */
+                flex-direction: row;
                 align-items: flex-start;
                 padding-top: 50px;
             }
             .profile-card {
                 width: 350px;
-                position: sticky; /* Липнет при скролле */
+                position: sticky;
                 top: 30px;
                 flex-shrink: 0;
             }
@@ -84,7 +84,7 @@
             }
         }
 
-        /* ЭЛЕМЕНТЫ ИНТЕРФЕЙСА */
+        /* ЭЛЕМЕНТЫ */
         .avatar {
             width: 140px;
             height: 140px;
@@ -141,11 +141,12 @@
         .btn-whatsapp { background-color: var(--accent-green); color: white; }
         .btn-phone { background-color: #2d2d2d; color: white; border: 1px solid #444; }
 
-        /* ТЕКСТ КОНТЕНТА */
+        /* ТЕКСТ */
         h2 { font-size: 20px; color: white; margin-top: 0; margin-bottom: 20px; border-left: 4px solid var(--accent-blue); padding-left: 15px; }
-        h3 { font-size: 17px; color: var(--accent-blue); margin-top: 25px; margin-bottom: 10px; }
+        h3 { font-size: 17px; color: var(--accent-blue); margin-top: 30px; margin-bottom: 15px; font-weight: 700; }
         p { color: var(--text-sec); margin-bottom: 15px; font-size: 15px; }
         
+        /* Списки */
         ul { padding-left: 0; list-style: none; margin-bottom: 20px; }
         li {
             margin-bottom: 10px;
@@ -166,7 +167,7 @@
         
         strong { color: white; font-weight: 600; }
 
-        /* ЦЕНЫ */
+        /* Цены */
         .price-item {
             display: flex;
             justify-content: space-between;
@@ -206,46 +207,61 @@
     <main class="content-area">
 
         <div class="content-card">
-            <h2 id="h_why">Зачем подбирать через нас?</h2>
+            <h2 id="h_why">Зачем подбирать через вас?</h2>
             <div id="txt_why">
                 <p>Вы действительно можете купить автомобиль самостоятельно — но вопрос в рисках. Мы подключаемся, чтобы:</p>
                 <ul>
-                    <li>Защитить вас от обмана со стороны дилеров и перекупщиков</li>
-                    <li>Найти проверенных и добросовестных продавцов</li>
-                    <li>Лично осмотреть автомобиль и выявить скрытые повреждения</li>
-                    <li>Проверить реальный пробег и историю ДТП</li>
+                    <li>защитить вас от обмана со стороны дилеров и перекупщиков</li>
+                    <li>найти проверенных и добросовестных продавцов</li>
+                    <li>лично осмотреть интересующий вас автомобиль</li>
+                    <li>проверить, соответствует ли реальное состояние описанию</li>
+                    <li>выявить: скрытые повреждения, заменённые элементы, скрученный пробег</li>
+                    <li>и, при необходимости, сторговать лучшую цену у наших партнёров.</li>
                 </ul>
-                <p><strong>Итог:</strong> Вы покупаете не просто машину — вы покупаете уверенность в сделке, а наш торг часто перекрывает стоимость услуг.</p>
+                <p><strong>Вы покупаете не просто машину — вы покупаете уверенность в сделке.</strong></p>
             </div>
         </div>
 
         <div class="content-card">
-            <h2 id="h_inspect">Зачем нужен осмотр?</h2>
+            <h2 id="h_inspect">Зачем вообще делать осмотр?</h2>
             <div id="txt_inspect">
                 <p>Профессиональный осмотр нужен, чтобы:</p>
                 <ul>
-                    <li>Убедиться в реальном техническом состоянии</li>
-                    <li>Понять, обоснована ли цена</li>
-                    <li>Не купить авто с проблемами, которые "всплывут" завтра</li>
+                    <li>убедиться в реальном техническом состоянии автомобиля</li>
+                    <li>понять, обоснована ли цена</li>
+                    <li>не попасть на продавцов, которые скрывают повреждения или продают авто с проблемной историей</li>
                 </ul>
-                <p><strong>Важно:</strong> Хороший осмотр сегодня = сохранённые деньги завтра при продаже авто.</p>
+                <p>Но есть ещё один важный момент — <strong>ваше будущее</strong>. Если позже вы будете продавать этот автомобиль, и новый покупатель закажет проверку, любые скрытые дефекты снизят цену — и платить за это будете уже вы.</p>
+                <p><strong>Хороший осмотр сегодня = сохранённые деньги завтра.</strong></p>
             </div>
         </div>
 
         <div class="content-card">
             <h2 id="h_faq">Частые вопросы</h2>
             
-            <h3 id="q_damaged">А если я ищу битый авто подешевле?</h3>
-            <p id="a_damaged">Мы поможем определить реальную тяжесть повреждений. Вы получите четкое понимание: это разумная экономия или дорогая ошибка, которая потребует огромных вложений в ремонт.</p>
+            <h3 id="q_damaged">А если я ищу битый автомобиль подешевле?</h3>
+            <div id="a_damaged">
+                <p>Мы поможем и в этом случае. Наша задача — определить:</p>
+                <ul>
+                    <li>насколько серьёзным было повреждение</li>
+                    <li>затронуты ли несущие элементы</li>
+                    <li>стоит ли автомобиль своих денег</li>
+                    <li>не выйдет ли ремонт дороже, чем вы рассчитываете</li>
+                </ul>
+                <p><strong>Вы получаете чёткое понимание: это разумная экономия или дорогая ошибка.</strong></p>
+            </div>
 
             <h3 id="q_myself">Почему я не могу сделать это сам?</h3>
-            <p id="a_myself_1">Мы уважаем опыт клиентов, но есть разница между осмотром «на глаз» и экспертизой.</p>
-            <div id="a_myself_list">
+            <div id="a_myself">
+                <p>Мы уверены в возможностях наших клиентов — но есть разница между осмотром «на глаз» и профессиональной экспертизой.</p>
+                <p>Наши специалисты:</p>
                 <ul>
-                    <li>Толщиномеры с точностью до 1 микрона</li>
-                    <li>Компьютерная диагностика всех систем</li>
-                    <li>Опыт, который замечает косвенные признаки (болты, швы)</li>
+                    <li>используют оборудование, которое измеряет толщину ЛКП с точностью до 1 микрона</li>
+                    <li>проводят компьютерную диагностику всех электронных систем</li>
+                    <li>работают с техникой, которая стоит дорого и не покупается ради одной проверки</li>
+                    <li>опираются не только на приборы, но и на многолетний опыт.</li>
                 </ul>
+                <p>Они замечают то, что обычный покупатель не увидит: следы разборки, скрученные болты, неоригинальные элементы. Именно так мы экономим вам время, деньги и нервы.</p>
             </div>
         </div>
 
@@ -267,7 +283,6 @@
         </div>
 
     </main>
-
 </div>
 
 <script>
@@ -279,34 +294,49 @@
             btn_wa: "Написать в WhatsApp",
             btn_call: "Позвонить",
             h_why: "Зачем подбирать через вас?",
-            txt_why: `<p>Вы можете купить авто сами — но это риск. Мы нужны, чтобы:</p>
+            txt_why: `<p>Вы действительно можете купить автомобиль самостоятельно — но вопрос в рисках. Мы подключаемся, чтобы:</p>
                       <ul>
-                          <li>Защитить вас от обмана дилеров</li>
-                          <li>Найти скрытые повреждения и скрученный пробег</li>
-                          <li>Сторговать лучшую цену у партнеров</li>
+                          <li>защитить вас от обмана со стороны дилеров и перекупщиков</li>
+                          <li>найти проверенных и добросовестных продавцов</li>
+                          <li>лично осмотреть интересующий вас автомобиль</li>
+                          <li>проверить, соответствует ли реальное состояние описанию</li>
+                          <li>выявить: скрытые повреждения, заменённые элементы, скрученный пробег</li>
+                          <li>и, при необходимости, сторговать лучшую цену у наших партнёров.</li>
                       </ul>
-                      <p><strong>Итог:</strong> Вы покупаете уверенность, а торг часто окупает наши услуги.</p>`,
-            h_inspect: "Зачем нужен осмотр?",
-            txt_inspect: `<p>Профессиональный осмотр позволяет:</p>
+                      <p><strong>Вы покупаете не просто машину — вы покупаете уверенность в сделке.</strong></p>`,
+            h_inspect: "Зачем вообще делать осмотр?",
+            txt_inspect: `<p>Профессиональный осмотр нужен, чтобы:</p>
                           <ul>
-                              <li>Узнать реальное техническое состояние</li>
-                              <li>Избежать авто с "темным" прошлым</li>
-                              <li>Сохранить стоимость авто для будущей перепродажи</li>
-                          </ul>`,
+                              <li>убедиться в реальном техническом состоянии автомобиля</li>
+                              <li>понять, обоснована ли цена</li>
+                              <li>не попасть на продавцов, которые скрывают повреждения или продают авто с проблемной историей</li>
+                          </ul>
+                          <p>Но есть ещё один важный момент — <strong>ваше будущее</strong>. Если позже вы будете продавать этот автомобиль, и новый покупатель закажет проверку, любые скрытые дефекты снизят цену — и платить за это будете уже вы.</p>
+                          <p><strong>Хороший осмотр сегодня = сохранённые деньги завтра.</strong></p>`,
             h_faq: "Частые вопросы",
-            q_damaged: "Ищете битый авто подешевле?",
-            a_damaged: "Мы оценим, задеты ли несущие элементы. Вы поймете: это выгодная экономия или будущая финансовая яма.",
-            q_myself: "Почему не сделать самому?",
-            a_myself_1: "Разница в оборудовании и опыте. Мы используем:",
-            a_myself_list: `<ul>
-                                <li>Толщиномеры (точность до 1 мкм)</li>
-                                <li>Профессиональные сканеры ошибок</li>
-                                <li>Насмотренность эксперта (швы, болты, зазоры)</li>
-                            </ul>`,
+            q_damaged: "А если я ищу битый автомобиль подешевле?",
+            a_damaged: `<p>Мы поможем и в этом случае. Наша задача — определить:</p>
+                        <ul>
+                            <li>насколько серьёзным было повреждение</li>
+                            <li>затронуты ли несущие элементы</li>
+                            <li>стоит ли автомобиль своих денег</li>
+                            <li>не выйдет ли ремонт дороже, чем вы рассчитываете</li>
+                        </ul>
+                        <p><strong>Вы получаете чёткое понимание: это разумная экономия или дорогая ошибка.</strong></p>`,
+            q_myself: "Почему я не могу сделать это сам?",
+            a_myself: `<p>Мы уверены в возможностях наших клиентов — но есть разница между осмотром «на глаз» и профессиональной экспертизой.</p>
+                       <p>Наши специалисты:</p>
+                       <ul>
+                           <li>используют оборудование, которое измеряет толщину ЛКП с точностью до 1 микрона</li>
+                           <li>проводят компьютерную диагностику всех электронных систем</li>
+                           <li>работают с техникой, которая стоит дорого и не покупается ради одной проверки</li>
+                           <li>опираются не только на приборы, но и на многолетний опыт.</li>
+                       </ul>
+                       <p>Они замечают то, что обычный покупатель не увидит: следы разборки, скрученные болты, неоригинальные элементы. Именно так мы экономим вам время, деньги и нервы.</p>`,
             h_price: "Стоимость услуг",
             p_hu: "Венгрия",
             p_de: "Германия",
-            p_eu: "Другие страны",
+            p_eu: "Европа",
             p_req: "По запросу",
             p_note: "Свяжитесь с нами для точного расчета"
         },
@@ -316,31 +346,46 @@
             t_exp_lead: "Lead experts — 20+ years.",
             btn_wa: "Contact via WhatsApp",
             btn_call: "Call Us",
-            h_why: "Why use our service?",
-            txt_why: `<p>You can buy alone, but it's risky. We step in to:</p>
+            h_why: "Why buy through us?",
+            txt_why: `<p>You can certainly buy a car yourself — but it's a matter of risk. We step in to:</p>
                       <ul>
-                          <li>Protect you from dealer scams & tricks</li>
-                          <li>Identify hidden damages & odometer fraud</li>
-                          <li>Negotiate the best price with our partners</li>
+                          <li>protect you from dealer and reseller scams</li>
+                          <li>find verified and honest sellers</li>
+                          <li>personally inspect the car you are interested in</li>
+                          <li>verify if the real condition matches the description</li>
+                          <li>detect: hidden damages, replaced parts, odometer rollback</li>
+                          <li>and, if necessary, negotiate the best price with our partners.</li>
                       </ul>
-                      <p><strong>Result:</strong> You buy confidence, and our negotiation often covers our fee.</p>`,
+                      <p><strong>You are buying not just a car — you are buying confidence in the deal.</strong></p>`,
             h_inspect: "Why is inspection needed?",
-            txt_inspect: `<p>Professional inspection ensures:</p>
+            txt_inspect: `<p>Professional inspection is necessary to:</p>
                           <ul>
-                              <li>Verification of the real technical condition</li>
-                              <li>Justification of the asking price</li>
-                              <li>Protection of resale value for the future</li>
-                          </ul>`,
+                              <li>verify the vehicle's real technical condition</li>
+                              <li>understand if the price is justified</li>
+                              <li>avoid sellers who hide damages or sell cars with a problematic history</li>
+                          </ul>
+                          <p>But there is another important point — <strong>your future</strong>. If you sell this car later, and the new buyer orders a check, any hidden defects will lower the price — and you will be the one paying for it.</p>
+                          <p><strong>A good inspection today = money saved tomorrow.</strong></p>`,
             h_faq: "FAQ",
             q_damaged: "Looking for a cheaper damaged car?",
-            a_damaged: "We assess if structural elements are affected. You'll know if it's a smart saving or a money pit.",
-            q_myself: "Why not do it myself?",
-            a_myself_1: "The difference lies in equipment and expertise. We use:",
-            a_myself_list: `<ul>
-                                <li>Paint gauges (1-micron precision)</li>
-                                <li>Professional OBD diagnostic scanners</li>
-                                <li>Expert eye for indirect signs (bolts, seams)</li>
-                            </ul>`,
+            a_damaged: `<p>We can help in this case too. Our task is to determine:</p>
+                        <ul>
+                            <li>how serious the damage was</li>
+                            <li>whether structural elements are affected</li>
+                            <li>if the car is worth the money</li>
+                            <li>if the repair will cost more than you expect</li>
+                        </ul>
+                        <p><strong>You get a clear understanding: is this a smart saving or an expensive mistake.</strong></p>`,
+            q_myself: "Why can't I do it myself?",
+            a_myself: `<p>We trust our clients' abilities — but there is a difference between a visual check and professional expertise.</p>
+                       <p>Our specialists:</p>
+                       <ul>
+                           <li>use equipment that measures paint thickness with 1-micron precision</li>
+                           <li>perform computer diagnostics of all electronic systems</li>
+                           <li>work with expensive tools that are not worth buying for a single check</li>
+                           <li>rely not only on devices but also on years of experience.</li>
+                       </ul>
+                       <p>They notice what an ordinary buyer won't see: signs of disassembly, turned bolts, non-original parts. This is how we save you time, money, and nerves.</p>`,
             h_price: "Service Prices",
             p_hu: "Hungary",
             p_de: "Germany",
@@ -355,30 +400,45 @@
             btn_wa: "Írjon WhatsApp-on",
             btn_call: "Hívás",
             h_why: "Miért válasszon minket?",
-            txt_why: `<p>Ön is vásárolhat autót, de kockázatos. Mi segítünk:</p>
+            txt_why: `<p>Ön is vásárolhat autót egyedül – de ez kockázatos. Mi azért vagyunk, hogy:</p>
                       <ul>
-                          <li>Megvédeni Önt a kereskedői trükköktől</li>
-                          <li>Feltárni a rejtett sérüléseket és a visszatekert órát</li>
-                          <li>Jobb árat kialkudni partnereinknél</li>
+                          <li>megvédjük Önt a kereskedők és a viszonteladók trükkjeitől</li>
+                          <li>megbízható és tisztességes eladókat találjunk</li>
+                          <li>személyesen vizsgáljuk át a kiválasztott autót</li>
+                          <li>ellenőrizzük, hogy a valós állapot megfelel-e a leírásnak</li>
+                          <li>feltárjuk: a rejtett sérüléseket, cserélt elemeket, visszatekert kilométerórát</li>
+                          <li>és szükség esetén a legjobb árat alkudjuk ki partnereinknél.</li>
                       </ul>
-                      <p><strong>Eredmény:</strong> Biztonságot vásárol, és az alkunk gyakran fedezi a munkadíjunkat.</p>`,
-            h_inspect: "Miért kell átvizsgálni?",
-            txt_inspect: `<p>A szakmai átvizsgálás garantálja:</p>
+                      <p><strong>Nem csak autót vesz – biztonságot vásárol.</strong></p>`,
+            h_inspect: "Miért szükséges az átvizsgálás?",
+            txt_inspect: `<p>A professzionális átvizsgálás azért szükséges, hogy:</p>
                           <ul>
-                              <li>A valós műszaki állapot megismerését</li>
-                              <li>Hogy az ár reális-e az állapothoz képest</li>
-                              <li>A jövőbeni eladási ár megőrzését</li>
-                          </ul>`,
+                              <li>meggyőződjön az autó valós műszaki állapotáról</li>
+                              <li>lássa, indokolt-e az ár</li>
+                              <li>elkerülje azokat az eladókat, akik elhallgatják a sérüléseket vagy a problémás előéletet</li>
+                          </ul>
+                          <p>De van még egy fontos tényező – <strong>az Ön jövője</strong>. Ha később eladja ezt az autót, és az új vevő átvizsgálást kér, a rejtett hibák csökkentik az árat – és ezt már Önnek kell megfizetnie.</p>
+                          <p><strong>A jó átvizsgálás ma = megtakarított pénz holnap.</strong></p>`,
             h_faq: "Gyakori kérdések",
             q_damaged: "Sérült autót keres olcsóbban?",
-            a_damaged: "Felmérjük, sérültek-e a tartóelemek. Tudni fogja: ez okos spórolás vagy pénznyelő.",
+            a_damaged: `<p>Ebben az esetben is segítünk. A feladatunk meghatározni:</p>
+                        <ul>
+                            <li>milyen súlyos volt a sérülés</li>
+                            <li>sérültek-e a tartóelemek</li>
+                            <li>megéri-e az árát az autó</li>
+                            <li>nem lesz-e drágább a javítás, mint amire számít</li>
+                        </ul>
+                        <p><strong>Ön tisztán fog látni: ez okos spórolás vagy drága hiba.</strong></p>`,
             q_myself: "Miért ne csináljam magam?",
-            a_myself_1: "A különbség a felszerelésben és a rutinban van:",
-            a_myself_list: `<ul>
-                                <li>Rétegvastagság-mérő (1 mikron pontosság)</li>
-                                <li>Professzionális diagnosztikai műszerek</li>
-                                <li>Szakértő szem (csavarok, illesztések ellenőrzése)</li>
-                            </ul>`,
+            a_myself: `<p>Bízunk ügyfeleink képességeiben – de különbség van a szemrevételezés és a szakértői vizsgálat között.</p>
+                       <p>Szakembereink:</p>
+                       <ul>
+                           <li>olyan eszközöket használnak, amelyek 1 mikron pontossággal mérik a rétegvastagságot</li>
+                           <li>elvégzik az összes elektronikus rendszer számítógépes diagnosztikáját</li>
+                           <li>olyan drága technikával dolgoznak, amelyet nem éri meg egyetlen ellenőrzés miatt megvenni</li>
+                           <li>nemcsak a műszerekre, hanem a sokéves tapasztalatra is támaszkodnak.</li>
+                       </ul>
+                       <p>Észreveszik azt, amit egy átlagos vásárló nem: szétszerelés nyomait, elfordult csavarokat, nem eredeti elemeket. Így spórolunk Önnek időt, pénzt és idegeskedést.</p>`,
             h_price: "Áraink",
             p_hu: "Magyarország",
             p_de: "Németország",
@@ -390,7 +450,7 @@
 
     function setLang(lang) {
         const texts = translations[lang];
-        // Проходим по простым текстовым полям
+        // Проходим по всем ключам перевода
         for (let key in texts) {
             const element = document.getElementById(key);
             if (element) {
@@ -398,7 +458,7 @@
             }
         }
         
-        // Переключаем активность кнопок
+        // Переключаем кнопки
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
         const langIndex = lang === 'ru' ? 0 : lang === 'en' ? 1 : 2;
         document.querySelectorAll('.lang-btn')[langIndex].classList.add('active');
