@@ -19,16 +19,18 @@
     <style>
         /* НОВАЯ СВЕТЛАЯ ТЕМА */
         :root {
-            --bg-color: #f8f9fa; /* Светло-серый фон */
-            --card-bg: #ffffff;  /* Белые карточки */
-            --text-main: #212529; /* Почти черный текст */
-            --text-sec: #6c757d;  /* Серый вторичный текст */
-            --accent-red: #dc3545; /* Красный акцент (как на примере) */
-            --accent-blue: #0d6efd; /* Синий для языков */
-            --shadow: 0 10px 30px rgba(0,0,0,0.08); /* Мягкая тень */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #212529;
+            --text-sec: #6c757d;
+            --accent-red: #dc3545;
+            --accent-blue: #0d6efd;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg-color);
@@ -40,7 +42,6 @@
             min-height: 100vh;
         }
 
-        /* Контейнер теперь один центральный */
         .main-container {
             width: 100%;
             max-width: 1000px;
@@ -62,7 +63,7 @@
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--accent-red); /* Красная рамка */
+            border: 3px solid var(--accent-red);
             margin-bottom: 15px;
             box-shadow: var(--shadow);
         }
@@ -71,7 +72,6 @@
         .subtitle { color: var(--accent-red); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
         .manager-name { font-weight: 600; margin-bottom: 15px; color: var(--text-sec); }
 
-        /* Переключатель языков */
         .lang-switch {
             display: flex;
             justify-content: center;
@@ -91,7 +91,6 @@
         }
         .lang-btn.active { background-color: var(--accent-blue); color: white; border-color: var(--accent-blue); }
 
-        /* Кнопки связи в шапке */
         .contact-buttons {
             display: flex;
             justify-content: center;
@@ -112,7 +111,7 @@
         .btn-header:hover { transform: translateY(-2px); }
 
 
-        /* === СЕКЦИЯ ТАРИФОВ (ГЛАВНОЕ ИЗМЕНЕНИЕ) === */
+        /* === СЕКЦИЯ ТАРИФОВ === */
         .tariffs-section {
             display: flex;
             flex-direction: column;
@@ -120,7 +119,7 @@
         }
         @media (min-width: 768px) {
             .tariffs-section {
-                flex-direction: row; /* На ПК в ряд */
+                flex-direction: row;
                 align-items: stretch;
             }
         }
@@ -159,26 +158,18 @@
             color: var(--accent-red);
             display: block;
             margin-bottom: 10px;
+            line-height: 1.2;
         }
-        .tariff-price-sub {
-            font-size: 15px;
+        .tariff-price-subtitle {
+            font-size: 14px;
             color: var(--text-sec);
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
+            display: block;
+            padding: 0 10px;
         }
-        .price-val-sub { font-weight: 700; color: var(--text-main); }
 
-        .tariff-desc {
-            flex-grow: 1; /* Растягиваем, чтобы кнопки были на одном уровне */
-        }
+        .tariff-desc { flex-grow: 1; }
         .tariff-desc p { margin-bottom: 15px; color: var(--text-sec); }
-        .tariff-desc ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-        }
+        .tariff-desc ul { list-style: none; padding: 0; margin: 20px 0; }
         .tariff-desc li {
             margin-bottom: 12px;
             padding-left: 30px;
@@ -186,7 +177,6 @@
             color: var(--text-main);
             font-weight: 500;
         }
-        /* Красная галочка вместо точки */
         .tariff-desc li::before {
             content: "✓";
             color: var(--accent-red);
@@ -214,11 +204,64 @@
             font-weight: 800;
             font-size: 18px;
             display: block;
-            margin-top: auto; /* Прижимаем к низу */
+            margin-top: auto;
             box-shadow: 0 10px 20px rgba(220, 53, 69, 0.2);
             transition: 0.3s;
         }
         .btn-order:hover { background-color: #c82333; box-shadow: 0 5px 10px rgba(220, 53, 69, 0.3); transform: translateY(2px); }
+
+
+        /* === ГАЛЕРЕЯ === */
+        .gallery-section { margin-top: 20px; }
+        .gallery-grid {
+            display: grid;
+            /* Автоматическое заполнение колонками, минимум 250px шириной */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item {
+            position: relative;
+            /* Делаем элементы квадратными */
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            /* Фотка заполняет квадрат, обрезая лишнее, но не искажаясь */
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .gallery-item:hover img { transform: scale(1.1); }
+        
+        /* Лайтбокс (увеличение фото) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px; right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
 
 
         /* === ОБЫЧНЫЕ ТЕКСТОВЫЕ БЛОКИ === */
@@ -234,7 +277,6 @@
         h3 { font-size: 18px; font-weight: 700; color: var(--accent-red); margin-top: 30px; margin-bottom: 15px; }
         p { color: var(--text-sec); margin-bottom: 15px; font-size: 16px; }
         
-        /* Списки в тексте */
         .content-block ul { padding-left: 0; list-style: none; }
         .content-block li {
             margin-bottom: 12px;
@@ -286,33 +328,23 @@
             <div class="tariff-title" id="srv_1_title">РАЗОВЫЙ ОСМОТР</div>
             
             <div class="tariff-price-block">
-                <div class="tariff-price-sub">
-                    <span>🇭🇺 <span id="p_hu">Венгрия</span></span>
-                    <span class="price-val-sub">150 - 350 €</span>
-                </div>
-                <div class="tariff-price-sub">
-                    <span>🇩🇪 <span id="p_de">Германия</span></span>
-                    <span class="price-val-sub">300 - 450 €</span>
-                </div>
-                <div class="tariff-price-sub">
-                    <span>🇪🇺 <span id="p_eu">Европа</span></span>
-                    <span class="price-val-sub" id="p_req">По запросу</span>
-                </div>
+                <span class="tariff-price-main">150 - 450+ €</span>
+                 <span class="tariff-price-subtitle" id="srv_1_subtitle">Базовая цена для Венгрии и Германии. Остальная Европа и логистика рассчитываются отдельно.</span>
             </div>
 
-            <div class="tariff-desc" id="srv_1_list">
-                <ul>
+            <div class="tariff-desc">
+                <ul id="srv_1_list">
                     <li>Выезд эксперта к автомобилю</li>
                     <li>Проверка кузова толщиномером</li>
                     <li>Компьютерная диагностика</li>
-                    <li>Тест-драйв и проверка механики</li>
+                    <li>Тест-драйв (по предварительной договоренности с продавцом)</li>
                     <li>Полный фото/видео отчет на Google Disk</li>
-                    <li>Торг с продавцом</li>
+                    <li>Торг с продавцом в ваших интересах</li>
                 </ul>
             </div>
-            <p class="tariff-note" id="srv_1_note">*Цена зависит от расстояния и сложности авто.</p>
+            <p class="tariff-note" id="srv_1_note">*Итоговая стоимость зависит от расстояния до авто и его сложности.</p>
             
-            <a href="https://wa.me/36205109369?text=Здравствуйте, хочу заказать разовый осмотр" class="btn-order" id="btn_order_1">ЗАКАЗАТЬ</a>
+            <a href="https://wa.me/36205109369?text=Здравствуйте, хочу заказать разовый осмотр" class="btn-order" id="btn_order_1">ЗАКАЗАТЬ ОСМОТР</a>
         </div>
 
 
@@ -321,26 +353,55 @@
             
             <div class="tariff-price-block">
                 <span class="tariff-price-main">500 €</span>
-                 <span style="color: var(--text-sec); font-size: 14px;" id="srv_2_subtitle">Фиксированная стоимость услуг</span>
+                 <span class="tariff-price-subtitle" id="srv_2_subtitle">Фиксированная стоимость услуг за полный цикл поиска.</span>
             </div>
 
             <div class="tariff-desc" id="srv_2_list">
-                <p>Полный цикл поиска автомобиля по вашим параметрам до результата.</p>
+                <p>Мы найдем лучший автомобиль по вашим параметрам до результата.</p>
                 <ul>
                     <li>Поиск объявлений по всей Европе</li>
-                    <li>Прозвон дилеров и проверка истории</li>
-                    <li>Отбор лучших вариантов</li>
-                    <li>Организация осмотров</li>
-                    <li>Максимальный торг в ваших интересах</li>
+                    <li>Прозвон дилеров и первичная проверка</li>
+                    <li>Отбор лучших вариантов для осмотра</li>
+                    <li>Организация диагностики</li>
+                    <li>Максимальный торг</li>
                     <li>Сопровождение сделки</li>
                 </ul>
             </div>
             <p class="tariff-note" id="srv_2_note">*Выезды на осмотр и доставка оплачиваются отдельно.</p>
 
-            <a href="https://wa.me/36205109369?text=Здравствуйте, интересует подбор под ключ" class="btn-order" id="btn_order_2">ЗАКАЗАТЬ</a>
+            <a href="https://wa.me/36205109369?text=Здравствуйте, интересует подбор под ключ" class="btn-order" id="btn_order_2">ЗАКАЗАТЬ ПОДБОР</a>
         </div>
 
     </section>
+
+    <section class="content-block gallery-section">
+        <h2 id="h_gallery">Недавние осмотры</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox('gallery1.jpg')">
+                <img src="gallery1.jpg" alt="Inspection 1" onerror="this.src='https://via.placeholder.com/400x400/eee/999?text=PHOTO+1'">
+            </div>
+             <div class="gallery-item" onclick="openLightbox('gallery2.jpg')">
+                <img src="gallery2.jpg" alt="Inspection 2" onerror="this.src='https://via.placeholder.com/400x400/eee/999?text=PHOTO+2'">
+            </div>
+             <div class="gallery-item" onclick="openLightbox('gallery3.jpg')">
+                <img src="gallery3.jpg" alt="Inspection 3" onerror="this.src='https://via.placeholder.com/400x400/eee/999?text=PHOTO+3'">
+            </div>
+             <div class="gallery-item" onclick="openLightbox('gallery4.jpg')">
+                <img src="gallery4.jpg" alt="Inspection 4" onerror="this.src='https://via.placeholder.com/400x400/eee/999?text=PHOTO+4'">
+            </div>
+            <div class="gallery-item" onclick="openLightbox('gallery5.jpg')">
+                <img src="gallery5.jpg" alt="Inspection 5" onerror="this.src='https://via.placeholder.com/400x400/eee/999?text=PHOTO+5'">
+            </div>
+             <div class="gallery-item" onclick="openLightbox('gallery6.jpg')">
+                <img src="gallery6.jpg" alt="Inspection 6" onerror="this.src='https://via.placeholder.com/400x400/eee/999?text=PHOTO+6'">
+            </div>
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
 
 
     <div class="content-block">
@@ -364,7 +425,7 @@
         <div id="txt_inspect">
             <p>Профессиональный осмотр нужен, чтобы убедиться в реальном техническом состоянии автомобиля и понять, обоснована ли цена.</p>
             <p>Не попасть на продавцов, которые скрывают повреждения или продают авто с проблемной историей.</p>
-            <p><strong>Если купить авто вслепую, уже при продаже авто в будущем скрытые дефекты могут вскрыться, и цена автомобиля сильно упадет.</strong></p>
+            <p><strong>Если купить авто вслепую, užе при продаже авто в будущем скрытые дефекты могут вскрыться, и цена автомобиля сильно упадет.</strong></p>
         </div>
     </div>
 
@@ -388,7 +449,20 @@
 </div>
 
 <script>
-    // ПЕРЕВОДЫ (Я обновил структуру для новых списков в тарифах)
+    // ФУНКЦИИ ГАЛЕРЕИ (ЛАЙТБОКС)
+    function openLightbox(imgSrc) {
+        document.getElementById('lightbox-img').src = imgSrc;
+        document.getElementById('lightbox').style.display = 'flex';
+        // Запрещаем скролл страницы под лайтбоксом
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+        // Разрешаем скролл обратно
+        document.body.style.overflow = 'auto';
+    }
+
+    // ПЕРЕВОДЫ (Обновлены под новые тексты тарифов и галерею)
     const translations = {
         ru: {
             t_role: "Профессиональный автоподбор",
@@ -396,34 +470,35 @@
             btn_wa: "Написать в WhatsApp",
             btn_call: "Позвонить",
             
-            // ТАРИФ 1
+            // ТАРИФ 1 (ОБНОВЛЕН)
             srv_1_title: "РАЗОВЫЙ ОСМОТР",
-            p_hu: "Венгрия", p_de: "Германия", p_eu: "Европа", p_req: "По запросу",
-            srv_1_list: `<ul>
-                            <li>Выезд эксперта к автомобилю</li>
-                            <li>Проверка кузова толщиномером</li>
-                            <li>Компьютерная диагностика</li>
-                            <li>Тест-драйв и проверка механики</li>
-                            <li>Полный фото/видео отчет на Google Disk</li>
-                            <li>Торг с продавцом</li>
-                        </ul>`,
-            srv_1_note: "*Цена зависит от расстояния и сложности авто.",
+            srv_1_subtitle: "Базовая цена для Венгрии и Германии. Остальная Европа и логистика рассчитываются отдельно.",
+            srv_1_list: `<li>Выезд эксперта к автомобилю</li>
+                         <li>Проверка кузова толщиномером</li>
+                         <li>Компьютерная диагностика</li>
+                         <li>Тест-драйв (по предварительной договоренности с продавцом)</li>
+                         <li>Полный фото/видео отчет на Google Disk</li>
+                         <li>Торг с продавцом в ваших интересах</li>`,
+            srv_1_note: "*Итоговая стоимость зависит от расстояния до авто и его сложности.",
             btn_order_1: "ЗАКАЗАТЬ ОСМОТР",
 
-            // ТАРИФ 2
+            // ТАРИФ 2 (ОБНОВЛЕН)
             srv_2_title: "ПОДБОР ПОД КЛЮЧ",
-            srv_2_subtitle: "Фиксированная стоимость услуг",
-            srv_2_list: `<p>Полный цикл поиска автомобиля по вашим параметрам до результата.</p>
+            srv_2_subtitle: "Фиксированная стоимость услуг за полный цикл поиска.",
+            srv_2_list: `<p>Мы найдем лучший автомобиль по вашим параметрам до результата.</p>
                         <ul>
                             <li>Поиск объявлений по всей Европе</li>
-                            <li>Прозвон дилеров и проверка истории</li>
-                            <li>Отбор лучших вариантов</li>
-                            <li>Организация осмотров</li>
-                            <li>Максимальный торг в ваших интересах</li>
+                            <li>Прозвон дилеров и первичная проверка</li>
+                            <li>Отбор лучших вариантов для осмотра</li>
+                            <li>Организация диагностики</li>
+                            <li>Максимальный торг</li>
                             <li>Сопровождение сделки</li>
                         </ul>`,
             srv_2_note: "*Выезды на осмотр и доставка оплачиваются отдельно.",
             btn_order_2: "ЗАКАЗАТЬ ПОДБОР",
+
+            // ГАЛЕРЕЯ
+            h_gallery: "Недавние осмотры",
 
             // ОСТАЛЬНОЕ
             h_why: "Зачем подбирать через нас?",
@@ -442,34 +517,34 @@
             btn_wa: "Contact via WhatsApp",
             btn_call: "Call Us",
 
-            // TARIFF 1
+            // TARIFF 1 (UPDATED)
             srv_1_title: "SINGLE INSPECTION",
-            p_hu: "Hungary", p_de: "Germany", p_eu: "Europe", p_req: "On request",
-            srv_1_list: `<ul>
-                            <li>Expert visit to the vehicle</li>
-                            <li>Paint thickness check (bodywork)</li>
-                            <li>Computer diagnostics</li>
-                            <li>Test drive & mechanical check</li>
-                            <li>Full photo/video report via Google Drive</li>
-                            <li>Price negotiation with seller</li>
-                        </ul>`,
-            srv_1_note: "*Price depends on distance and car complexity.",
+            srv_1_subtitle: "Base price for Hungary & Germany. Rest of Europe and logistics calculated separately.",
+            srv_1_list: `<li>Expert visit to the vehicle</li>
+                         <li>Paint thickness check (bodywork)</li>
+                         <li>Computer diagnostics</li>
+                         <li>Test drive (by prior arrangement with the seller)</li>
+                         <li>Full photo/video report via Google Drive</li>
+                         <li>Price negotiation in your interest</li>`,
+            srv_1_note: "*Final price depends on distance and car complexity.",
             btn_order_1: "ORDER INSPECTION",
 
-            // TARIFF 2
+            // TARIFF 2 (UPDATED)
             srv_2_title: "TURNKEY SOURCING",
-            srv_2_subtitle: "Fixed service fee",
-            srv_2_list: `<p>Full cycle search based on your criteria until the result is achieved.</p>
+            srv_2_subtitle: "Fixed service fee for the full search cycle.",
+            srv_2_list: `<p>We will find the best car according to your criteria until the result is achieved.</p>
                         <ul>
                             <li>Searching ads across Europe</li>
-                            <li>Calling dealers & history check</li>
-                            <li>Selecting the best options</li>
-                            <li>Organizing inspections</li>
+                            <li>Calling dealers & initial check</li>
+                            <li>Selecting best options for inspection</li>
+                            <li>Organizing diagnostics</li>
                             <li>Maximum price negotiation</li>
                             <li>Deal support</li>
                         </ul>`,
             srv_2_note: "*Inspection trips and delivery are paid separately.",
             btn_order_2: "ORDER SOURCING",
+
+            h_gallery: "Recent Inspections",
 
             // OTHER
             h_why: "Why choose us?",
@@ -488,34 +563,34 @@
             btn_wa: "WhatsApp schreiben",
             btn_call: "Anrufen",
 
-             // TARIFF 1
+             // TARIFF 1 (UPDATED)
             srv_1_title: "EINMALIGE INSPEKTION",
-            p_hu: "Ungarn", p_de: "Deutschland", p_eu: "Europa", p_req: "Auf Anfrage",
-            srv_1_list: `<ul>
-                            <li>Expertenbesuch vor Ort</li>
-                            <li>Lackschichtenmessung (Karosserie)</li>
-                            <li>Computerdiagnose</li>
-                            <li>Probefahrt & Mechanik-Check</li>
-                            <li>Vollständiger Foto-/Videobericht (Google Drive)</li>
-                            <li>Preisverhandlung mit Verkäufer</li>
-                        </ul>`,
-            srv_1_note: "*Preis hängt von Entfernung und Fahrzeugkomplexität ab.",
+            srv_1_subtitle: "Grundpreis für Ungarn & Deutschland. Restliches Europa und Logistik werden separat berechnet.",
+            srv_1_list: `<li>Expertenbesuch vor Ort</li>
+                         <li>Lackschichtenmessung (Karosserie)</li>
+                         <li>Computerdiagnose</li>
+                         <li>Probefahrt (nach vorheriger Absprache mit dem Verkäufer)</li>
+                         <li>Vollständiger Foto-/Videobericht (Google Drive)</li>
+                         <li>Preisverhandlung in Ihrem Interesse</li>`,
+            srv_1_note: "*Endpreis hängt von Entfernung und Fahrzeugkomplexität ab.",
             btn_order_1: "INSPEKTION BESTELLEN",
 
-            // TARIFF 2
+            // TARIFF 2 (UPDATED)
             srv_2_title: "KOMPLETTSERVICE",
-            srv_2_subtitle: "Feste Servicegebühr",
-            srv_2_list: `<p>Vollständiger Suchzyklus nach Ihren Kriterien bis zum Ergebnis.</p>
+            srv_2_subtitle: "Feste Servicegebühr für den gesamten Suchzyklus.",
+            srv_2_list: `<p>Wir finden das beste Auto nach Ihren Kriterien bis zum Ergebnis.</p>
                         <ul>
                             <li>Suche nach Anzeigen in ganz Europa</li>
-                            <li>Händleranrufe & Historienprüfung</li>
-                            <li>Auswahl der besten Optionen</li>
-                            <li>Organisation von Inspektionen</li>
+                            <li>Händleranrufe & Erstprüfung</li>
+                            <li>Auswahl der besten Optionen zur Inspektion</li>
+                            <li>Organisation der Diagnostik</li>
                             <li>Maximale Preisverhandlung</li>
                             <li>Begleitung des Geschäfts</li>
                         </ul>`,
             srv_2_note: "*Inspektionsfahrten und Lieferung werden separat bezahlt.",
             btn_order_2: "SUCHE BESTELLEN",
+
+            h_gallery: "Aktuelle Inspektionen",
 
             // OTHER
             h_why: "Warum wir?",
@@ -534,34 +609,34 @@
             btn_wa: "Írjon WhatsApp-on",
             btn_call: "Hívás",
 
-             // TARIFF 1
+             // TARIFF 1 (UPDATED)
             srv_1_title: "EGYSZERI ÁTVIZSGÁLÁS",
-            p_hu: "Magyarország", p_de: "Németország", p_eu: "Európa", p_req: "Kérésre",
-            srv_1_list: `<ul>
-                            <li>Szakértő kiszállása az autóhoz</li>
-                            <li>Rétegvastagság mérés (karosszéria)</li>
-                            <li>Számítógépes diagnosztika</li>
-                            <li>Próbaút és mechanikai ellenőrzés</li>
-                            <li>Teljes fotó/videó jelentés (Google Drive)</li>
-                            <li>Alkudozás az eladóval</li>
-                        </ul>`,
-            srv_1_note: "*Az ár a távolságtól és az autó bonyolultságától függ.",
+            srv_1_subtitle: "Alapár Magyarországra és Németországra. Európa többi része és a logisztika külön kerül kiszámításra.",
+            srv_1_list: `<li>Szakértő kiszállása az autóhoz</li>
+                         <li>Rétegvastagság mérés (karosszéria)</li>
+                         <li>Számítógépes diagnosztika</li>
+                         <li>Próbaút (az eladóval történő előzetes egyeztetés alapján)</li>
+                         <li>Teljes fotó/videó jelentés (Google Drive)</li>
+                         <li>Alkudozás az Ön érdekében</li>`,
+            srv_1_note: "*A végső ár a távolságtól és az autó bonyolultságától függ.",
             btn_order_1: "VIZSGÁLAT RENDELÉSE",
 
-            // TARIFF 2
+            // TARIFF 2 (UPDATED)
             srv_2_title: "KULCSRAKÉSZ KERESÉS",
-            srv_2_subtitle: "Fix szolgáltatási díj",
-            srv_2_list: `<p>Teljes körű keresés az Ön igényei alapján az eredményig.</p>
+            srv_2_subtitle: "Fix szolgáltatási díj a teljes keresési ciklusra.",
+            srv_2_list: `<p>Megtaláljuk a legjobb autót az Ön igényei alapján az eredményig.</p>
                         <ul>
                             <li>Hirdetések keresése Európa-szerte</li>
-                            <li>Kereskedők felhívása és előélet ellenőrzése</li>
-                            <li>A legjobb lehetőségek kiválasztása</li>
-                            <li>Vizsgálatok megszervezése</li>
-                            <li>Maximális alkudozás az Ön érdekében</li>
+                            <li>Kereskedők felhívása és elsődleges ellenőrzés</li>
+                            <li>A legjobb lehetőségek kiválasztása vizsgálatra</li>
+                            <li>Diagnosztika megszervezése</li>
+                            <li>Maximális alkudozás</li>
                             <li>Ügylet kísérése</li>
                         </ul>`,
             srv_2_note: "*A kiszállások és a szállítás külön fizetendő.",
             btn_order_2: "KERESÉS RENDELÉSE",
+
+            h_gallery: "Legutóbbi vizsgálatok",
 
             // OTHER
             h_why: "Miért válasszon minket?",
@@ -580,7 +655,14 @@
         const texts = translations[lang];
         for (let key in texts) {
             const element = document.getElementById(key);
-            if (element) element.innerHTML = texts[key];
+            if (element) {
+                // Для списков используем innerHTML, для остального textContent, если там нет тегов
+                if (key.includes('_list') || key.includes('txt_') || key.includes('a_')) {
+                     element.innerHTML = texts[key];
+                } else {
+                     element.innerHTML = texts[key];
+                }
+            }
         }
         const buttons = document.querySelectorAll('.lang-btn');
         buttons.forEach(btn => btn.classList.remove('active'));
