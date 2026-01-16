@@ -3,292 +3,407 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrueCarSelect | Professional Car Sourcing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>TrueCarSelect | Auto Inspection Europe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #121212;
             --card-bg: #1e1e1e;
-            --accent-blue: #007bff;
-            --accent-green: #25D366;
-            --text-main: #ffffff;
-            --text-sec: #bbbbbb;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --text-main: #f3f4f6;
+            --text-sec: #9ca3af;
+            --border-color: #374151;
         }
+
+        * { box-sizing: border-box; }
 
         body {
             background-color: var(--bg-color);
             font-family: 'Montserrat', sans-serif;
             color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px 0;
-            line-height: 1.6;
         }
 
-        .container {
-            background: var(--card-bg);
-            padding: 30px 25px;
-            border-radius: 24px;
+        /* ГЛАВНЫЙ КОНТЕЙНЕР (СЕТКА) */
+        .main-wrapper {
             width: 100%;
-            max-width: 420px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.6);
-            position: relative;
+            max-width: 1100px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column; /* По умолчанию колонка (для мобилок) */
+            gap: 30px;
         }
 
-        /* Переключатель языков */
+        /* ЛЕВАЯ КОЛОНКА (ПРОФИЛЬ - ЗАКРЕПЛЕНА НА ПК) */
+        .profile-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
+            height: fit-content;
+        }
+
+        /* ПРАВАЯ КОЛОНКА (КОНТЕНТ) */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        /* АДАПТИВ ПОД ПК (ШИРИНА > 900px) */
+        @media (min-width: 900px) {
+            .main-wrapper {
+                flex-direction: row; /* Две колонки */
+                align-items: flex-start;
+                padding-top: 50px;
+            }
+            .profile-card {
+                width: 350px;
+                position: sticky; /* Липнет при скролле */
+                top: 30px;
+                flex-shrink: 0;
+            }
+            .content-area {
+                flex-grow: 1;
+            }
+        }
+
+        /* ЭЛЕМЕНТЫ ИНТЕРФЕЙСА */
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-blue);
+            margin-bottom: 20px;
+        }
+        
+        h1 { margin: 10px 0; font-size: 26px; font-weight: 800; }
+        .subtitle { color: var(--accent-blue); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        
         .lang-switch {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 25px;
-            background: #2a2a2a;
-            padding: 5px;
+            background: rgba(255,255,255,0.05);
+            padding: 6px;
             border-radius: 12px;
             width: fit-content;
             margin-left: auto;
             margin-right: auto;
         }
-        
         .lang-btn {
             background: transparent;
             border: none;
-            color: #777;
+            color: var(--text-sec);
             font-weight: 600;
             cursor: pointer;
-            padding: 8px 12px;
+            padding: 8px 14px;
             border-radius: 8px;
             transition: 0.3s;
-            font-family: 'Montserrat', sans-serif;
         }
+        .lang-btn.active { background-color: var(--accent-blue); color: white; }
+        .lang-btn:hover:not(.active) { color: white; }
 
-        .lang-btn.active {
-            background-color: var(--accent-blue);
-            color: white;
-            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.4);
-        }
-
-        /* Шапка */
-        .header { text-align: center; margin-bottom: 30px; }
-        .avatar {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-blue);
-            margin-bottom: 15px;
-        }
-        h1 { margin: 5px 0; font-size: 24px; font-weight: 700; }
-        .subtitle { color: var(--accent-blue); font-weight: 600; margin-top: 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;}
-        .intro-text { font-size: 13px; color: var(--text-sec); margin-bottom: 25px; }
-
-        /* Кнопки */
+        /* КНОПКИ */
         .btn {
             display: flex;
             justify-content: center;
             align-items: center;
             text-decoration: none;
-            padding: 14px;
+            padding: 16px;
             border-radius: 14px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 12px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            font-size: 15px;
+            transition: transform 0.2s;
+            font-size: 16px;
         }
         .btn:active { transform: scale(0.98); }
-        .btn-whatsapp {
-            background-color: var(--accent-green);
-            color: white;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
-        }
-        .btn-phone {
-            background-color: #333;
-            color: white;
-            border: 1px solid #444;
-        }
+        .btn:hover { opacity: 0.9; }
+        
+        .btn-whatsapp { background-color: var(--accent-green); color: white; }
+        .btn-phone { background-color: #2d2d2d; color: white; border: 1px solid #444; }
 
-        /* Блоки контента */
-        .section-title {
-            font-size: 18px;
-            border-left: 4px solid var(--accent-blue);
-            padding-left: 10px;
-            margin-top: 35px;
-            margin-bottom: 15px;
-            font-weight: 700;
+        /* ТЕКСТ КОНТЕНТА */
+        h2 { font-size: 20px; color: white; margin-top: 0; margin-bottom: 20px; border-left: 4px solid var(--accent-blue); padding-left: 15px; }
+        h3 { font-size: 17px; color: var(--accent-blue); margin-top: 25px; margin-bottom: 10px; }
+        p { color: var(--text-sec); margin-bottom: 15px; font-size: 15px; }
+        
+        ul { padding-left: 0; list-style: none; margin-bottom: 20px; }
+        li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: #d1d5db;
+            font-size: 15px;
         }
-        .info-block p { font-size: 14px; color: var(--text-sec); margin-bottom: 18px; }
-        .highlight { color: #fff; font-weight: 700; display: block; margin-bottom: 4px; }
+        li::before {
+            content: "•";
+            color: var(--accent-blue);
+            font-weight: bold;
+            position: absolute;
+            left: 5px;
+            font-size: 20px;
+            line-height: 18px;
+        }
+        
+        strong { color: white; font-weight: 600; }
 
-        /* Цены */
-        .price-list { list-style: none; padding: 0; margin: 0; }
+        /* ЦЕНЫ */
         .price-item {
-            background: #2a2a2a;
-            margin-bottom: 8px;
-            padding: 12px 15px;
-            border-radius: 10px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
         }
-        .price-tag { color: var(--accent-green); font-weight: 700; }
-        .flag { margin-right: 8px; font-size: 16px; }
-        
-        /* Футер */
-        .footer-note { font-size: 11px; color: #555; text-align: center; margin-top: 20px; }
+        .price-val { color: var(--accent-green); font-weight: 700; }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
+<div class="main-wrapper">
+
+    <aside class="profile-card">
         <div class="lang-switch">
             <button class="lang-btn active" onclick="setLang('ru')">RU</button>
             <button class="lang-btn" onclick="setLang('en')">EN</button>
             <button class="lang-btn" onclick="setLang('hu')">HU</button>
         </div>
 
-        <div class="header">
-            <img src="avatar.jpg" alt="TrueCarSelect" class="avatar">
-            <h1>TrueCarSelect</h1>
-            <p class="subtitle" id="subtitle">Профессиональный автоподбор</p>
-            <p class="intro-text" id="intro">
-                Работаем в Венгрии и Европе.<br>
-                Опыт команды — 10+ лет.<br>
-                Ведущие эксперты — 20+ лет.
-            </p>
-            
-            <a href="https://wa.me/36300000000" class="btn btn-whatsapp" id="btn_wa" target="_blank">
-                Написать в WhatsApp
-            </a>
-            <a href="tel:+36300000000" class="btn btn-phone" id="btn_call">
-                Позвонить
-            </a>
+        <img src="avatar.jpg" alt="Avatar" class="avatar">
+        <h1>TrueCarSelect</h1>
+        <p class="subtitle" id="t_role">Профессиональный автоподбор</p>
+        
+        <p style="color: #9ca3af; font-size: 14px; margin-bottom: 25px;">
+            <span id="t_exp_team">Опыт команды — 10+ лет.</span><br>
+            <span id="t_exp_lead">Эксперты — 20+ лет.</span>
+        </p>
+
+        <a href="https://wa.me/36300000000" class="btn btn-whatsapp" id="btn_wa" target="_blank">WhatsApp</a>
+        <a href="tel:+36300000000" class="btn btn-phone" id="btn_call">Позвонить</a>
+    </aside>
+
+    <main class="content-area">
+
+        <div class="content-card">
+            <h2 id="h_why">Зачем подбирать через вас?</h2>
+            <div id="txt_why">
+                <p>Вы действительно можете купить автомобиль самостоятельно — но вопрос в рисках. Мы подключаемся, чтобы:</p>
+                <ul>
+                    <li>Защитить вас от обмана со стороны дилеров и перекупщиков</li>
+                    <li>Найти проверенных и добросовестных продавцов</li>
+                    <li>Лично осмотреть автомобиль и выявить скрытые повреждения</li>
+                    <li>Проверить реальный пробег и историю ДТП</li>
+                </ul>
+                <p><strong>Итог:</strong> Вы покупаете не просто машину — вы покупаете уверенность в сделке, а наш торг часто перекрывает стоимость услуг.</p>
+            </div>
         </div>
 
-        <h2 class="section-title" id="title_why">Почему выбирают нас?</h2>
-        <div class="info-block">
-            <p><span class="highlight" id="why_1_title">🛡 Защита от обмана</span>
-            <span id="why_1_text">Находим скрытые повреждения и скрученный пробег, о которых молчат продавцы.</span></p>
-            
-            <p><span class="highlight" id="why_2_title">💰 Окупаемость услуги</span>
-            <span id="why_2_text">Наш профессиональный торг часто перекрывает стоимость наших услуг.</span></p>
-            
-            <p><span class="highlight" id="why_3_title">🔎 Профессиональный осмотр</span>
-            <span id="why_3_text">Используем толщиномеры (до 1 мкм) и компьютерную диагностику.</span></p>
+        <div class="content-card">
+            <h2 id="h_inspect">Зачем нужен осмотр?</h2>
+            <div id="txt_inspect">
+                <p>Профессиональный осмотр нужен, чтобы:</p>
+                <ul>
+                    <li>Убедиться в реальном техническом состоянии</li>
+                    <li>Понять, обоснована ли цена</li>
+                    <li>Не купить авто с проблемами, которые "всплывут" завтра</li>
+                </ul>
+                <p><strong>Важно:</strong> Хороший осмотр сегодня = сохранённые деньги завтра при продаже авто.</p>
+            </div>
         </div>
 
-        <h2 class="section-title" id="title_damaged">Ищете авто под ремонт?</h2>
-        <div class="info-block">
-            <p id="damaged_text">Оценим реальный масштаб повреждений, чтобы дешевая покупка не превратилась в дорогой ремонт.</p>
+        <div class="content-card">
+            <h2 id="h_faq">Частые вопросы</h2>
+            
+            <h3 id="q_damaged">А если я ищу битый авто подешевле?</h3>
+            <p id="a_damaged">Мы поможем определить реальную тяжесть повреждений. Вы получите четкое понимание: это разумная экономия или дорогая ошибка, которая потребует огромных вложений в ремонт.</p>
+
+            <h3 id="q_myself">Почему я не могу сделать это сам?</h3>
+            <p id="a_myself_1">Мы уважаем опыт клиентов, но есть разница между осмотром «на глаз» и экспертизой.</p>
+            <div id="a_myself_list">
+                <ul>
+                    <li>Толщиномеры с точностью до 1 микрона</li>
+                    <li>Компьютерная диагностика всех систем</li>
+                    <li>Опыт, который замечает косвенные признаки (болты, швы)</li>
+                </ul>
+            </div>
         </div>
 
-        <h2 class="section-title" id="title_price">Стоимость услуг</h2>
-        <ul class="price-list">
-            <li class="price-item">
-                <span><span class="flag">🇭🇺</span> <span id="country_hu">Венгрия</span></span>
-                <span class="price-tag">150 - 350 €</span>
-            </li>
-            <li class="price-item">
-                <span><span class="flag">🇩🇪</span> <span id="country_de">Германия</span></span>
-                <span class="price-tag">300 - 450 €</span>
-            </li>
-            <li class="price-item">
-                <span><span class="flag">🇪🇺</span> <span id="country_eu">Другие страны</span></span>
-                <span class="price-tag" id="price_request">По запросу</span>
-            </li>
-        </ul>
-        <p class="footer-note" id="footer_note">Для точного расчета свяжитесь с нами</p>
+        <div class="content-card">
+            <h2 id="h_price">Стоимость услуг</h2>
+            <div class="price-item">
+                <span>🇭🇺 <span id="p_hu">Венгрия</span></span>
+                <span class="price-val">150 - 350 €</span>
+            </div>
+            <div class="price-item">
+                <span>🇩🇪 <span id="p_de">Германия</span></span>
+                <span class="price-val">300 - 450 €</span>
+            </div>
+            <div class="price-item">
+                <span>🇪🇺 <span id="p_eu">Европа</span></span>
+                <span class="price-val" id="p_req">По запросу</span>
+            </div>
+            <p style="text-align: center; font-size: 13px; margin-top: 15px;" id="p_note">Свяжитесь с нами для точного расчета</p>
+        </div>
 
-    </div>
+    </main>
 
-    <script>
-        // База данных переводов
-        const translations = {
-            ru: {
-                subtitle: "Профессиональный автоподбор",
-                intro: "Работаем в Венгрии и Европе.<br>Опыт команды — 10+ лет.<br>Ведущие эксперты — 20+ лет.",
-                btn_wa: "Написать в WhatsApp",
-                btn_call: "Позвонить",
-                title_why: "Почему выбирают нас?",
-                why_1_title: "🛡 Защита от обмана",
-                why_1_text: "Находим скрытые повреждения и скрученный пробег, о которых молчат продавцы.",
-                why_2_title: "💰 Окупаемость услуги",
-                why_2_text: "Наш профессиональный торг часто перекрывает стоимость наших услуг.",
-                why_3_title: "🔎 Профессиональный осмотр",
-                why_3_text: "Используем толщиномеры (до 1 мкм) и компьютерную диагностику.",
-                title_damaged: "Ищете авто под ремонт?",
-                damaged_text: "Оценим реальный масштаб повреждений, чтобы дешевая покупка не превратилась в дорогой ремонт.",
-                title_price: "Стоимость услуг",
-                country_hu: "Венгрия",
-                country_de: "Германия",
-                country_eu: "Другие страны",
-                price_request: "По запросу",
-                footer_note: "Для точного расчета свяжитесь с нами"
-            },
-            en: {
-                subtitle: "Professional Car Inspection",
-                intro: "Operating in Hungary & Europe.<br>Team experience — 10+ years.<br>Lead experts — 20+ years.",
-                btn_wa: "Contact via WhatsApp",
-                btn_call: "Call Us",
-                title_why: "Why choose us?",
-                why_1_title: "🛡 Fraud Protection",
-                why_1_text: "We detect hidden damages and odometer rollback that sellers don't mention.",
-                why_2_title: "💰 Return on Investment",
-                why_2_text: "Our professional negotiation often saves you more than the cost of our service.",
-                why_3_title: "🔎 Professional Equipment",
-                why_3_text: "We use paint thickness gauges (1 micron precision) and OBD diagnostics.",
-                title_damaged: "Buying a damaged car?",
-                damaged_text: "We assess the real damage extent so a cheap deal doesn't become a money pit.",
-                title_price: "Service Prices",
-                country_hu: "Hungary",
-                country_de: "Germany",
-                country_eu: "Other countries",
-                price_request: "On request",
-                footer_note: "Contact us for a precise quote"
-            },
-            hu: {
-                subtitle: "Professzionális Autóvizsgálat",
-                intro: "Magyarországon és Európában.<br>Csapat tapasztalat — 10+ év.<br>Vezető szakértők — 20+ év.",
-                btn_wa: "Írjon WhatsApp-on",
-                btn_call: "Hívás",
-                title_why: "Miért válasszon minket?",
-                why_1_title: "🛡 Védelem a csalások ellen",
-                why_1_text: "Megtaláljuk a rejtett hibákat és a visszatekert kilométerórát, amit az eladók elhallgatnak.",
-                why_2_title: "💰 Megtérülő szolgáltatás",
-                why_2_text: "Szakértő alkudozásunk gyakran többet spórol Önnek, mint a szolgáltatásunk ára.",
-                why_3_title: "🔎 Professzionális eszközök",
-                why_3_text: "Rétegvastagság-mérőt és számítógépes diagnosztikát használunk.",
-                title_damaged: "Sérült autót keres?",
-                damaged_text: "Felmérjük a sérülés valós mértékét, hogy az olcsó vétel ne váljon pénznyelővé.",
-                title_price: "Szolgáltatások ára",
-                country_hu: "Magyarország",
-                country_de: "Németország",
-                country_eu: "Egyéb országok",
-                price_request: "Kérésre",
-                footer_note: "Pontos árajánlatért vegye fel velünk a kapcsolatot"
-            }
-        };
+</div>
 
-        function setLang(lang) {
-            // Меняем текст
-            const texts = translations[lang];
-            for (let key in texts) {
-                const element = document.getElementById(key);
-                if (element) {
-                    element.innerHTML = texts[key];
-                }
-            }
-
-            // Меняем активность кнопок
-            const buttons = document.querySelectorAll('.lang-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            // Находим кнопку с нужным текстом и делаем активной (простой способ)
-            const langMap = {'ru': 0, 'en': 1, 'hu': 2};
-            buttons[langMap[lang]].classList.add('active');
+<script>
+    const translations = {
+        ru: {
+            t_role: "Профессиональный автоподбор",
+            t_exp_team: "Опыт команды — 10+ лет.",
+            t_exp_lead: "Эксперты — 20+ лет.",
+            btn_wa: "Написать в WhatsApp",
+            btn_call: "Позвонить",
+            h_why: "Зачем подбирать через вас?",
+            txt_why: `<p>Вы можете купить авто сами — но это риск. Мы нужны, чтобы:</p>
+                      <ul>
+                          <li>Защитить вас от обмана дилеров</li>
+                          <li>Найти скрытые повреждения и скрученный пробег</li>
+                          <li>Сторговать лучшую цену у партнеров</li>
+                      </ul>
+                      <p><strong>Итог:</strong> Вы покупаете уверенность, а торг часто окупает наши услуги.</p>`,
+            h_inspect: "Зачем нужен осмотр?",
+            txt_inspect: `<p>Профессиональный осмотр позволяет:</p>
+                          <ul>
+                              <li>Узнать реальное техническое состояние</li>
+                              <li>Избежать авто с "темным" прошлым</li>
+                              <li>Сохранить стоимость авто для будущей перепродажи</li>
+                          </ul>`,
+            h_faq: "Частые вопросы",
+            q_damaged: "Ищете битый авто подешевле?",
+            a_damaged: "Мы оценим, задеты ли несущие элементы. Вы поймете: это выгодная экономия или будущая финансовая яма.",
+            q_myself: "Почему не сделать самому?",
+            a_myself_1: "Разница в оборудовании и опыте. Мы используем:",
+            a_myself_list: `<ul>
+                                <li>Толщиномеры (точность до 1 мкм)</li>
+                                <li>Профессиональные сканеры ошибок</li>
+                                <li>Насмотренность эксперта (швы, болты, зазоры)</li>
+                            </ul>`,
+            h_price: "Стоимость услуг",
+            p_hu: "Венгрия",
+            p_de: "Германия",
+            p_eu: "Другие страны",
+            p_req: "По запросу",
+            p_note: "Свяжитесь с нами для точного расчета"
+        },
+        en: {
+            t_role: "Professional Car Sourcing",
+            t_exp_team: "Team experience — 10+ years.",
+            t_exp_lead: "Lead experts — 20+ years.",
+            btn_wa: "Contact via WhatsApp",
+            btn_call: "Call Us",
+            h_why: "Why use our service?",
+            txt_why: `<p>You can buy alone, but it's risky. We step in to:</p>
+                      <ul>
+                          <li>Protect you from dealer scams & tricks</li>
+                          <li>Identify hidden damages & odometer fraud</li>
+                          <li>Negotiate the best price with our partners</li>
+                      </ul>
+                      <p><strong>Result:</strong> You buy confidence, and our negotiation often covers our fee.</p>`,
+            h_inspect: "Why is inspection needed?",
+            txt_inspect: `<p>Professional inspection ensures:</p>
+                          <ul>
+                              <li>Verification of the real technical condition</li>
+                              <li>Justification of the asking price</li>
+                              <li>Protection of resale value for the future</li>
+                          </ul>`,
+            h_faq: "FAQ",
+            q_damaged: "Looking for a cheaper damaged car?",
+            a_damaged: "We assess if structural elements are affected. You'll know if it's a smart saving or a money pit.",
+            q_myself: "Why not do it myself?",
+            a_myself_1: "The difference lies in equipment and expertise. We use:",
+            a_myself_list: `<ul>
+                                <li>Paint gauges (1-micron precision)</li>
+                                <li>Professional OBD diagnostic scanners</li>
+                                <li>Expert eye for indirect signs (bolts, seams)</li>
+                            </ul>`,
+            h_price: "Service Prices",
+            p_hu: "Hungary",
+            p_de: "Germany",
+            p_eu: "Europe",
+            p_req: "On request",
+            p_note: "Contact us for a precise quote"
+        },
+        hu: {
+            t_role: "Professzionális Autóvizsgálat",
+            t_exp_team: "Csapat tapasztalat — 10+ év.",
+            t_exp_lead: "Vezető szakértők — 20+ év.",
+            btn_wa: "Írjon WhatsApp-on",
+            btn_call: "Hívás",
+            h_why: "Miért válasszon minket?",
+            txt_why: `<p>Ön is vásárolhat autót, de kockázatos. Mi segítünk:</p>
+                      <ul>
+                          <li>Megvédeni Önt a kereskedői trükköktől</li>
+                          <li>Feltárni a rejtett sérüléseket és a visszatekert órát</li>
+                          <li>Jobb árat kialkudni partnereinknél</li>
+                      </ul>
+                      <p><strong>Eredmény:</strong> Biztonságot vásárol, és az alkunk gyakran fedezi a munkadíjunkat.</p>`,
+            h_inspect: "Miért kell átvizsgálni?",
+            txt_inspect: `<p>A szakmai átvizsgálás garantálja:</p>
+                          <ul>
+                              <li>A valós műszaki állapot megismerését</li>
+                              <li>Hogy az ár reális-e az állapothoz képest</li>
+                              <li>A jövőbeni eladási ár megőrzését</li>
+                          </ul>`,
+            h_faq: "Gyakori kérdések",
+            q_damaged: "Sérült autót keres olcsóbban?",
+            a_damaged: "Felmérjük, sérültek-e a tartóelemek. Tudni fogja: ez okos spórolás vagy pénznyelő.",
+            q_myself: "Miért ne csináljam magam?",
+            a_myself_1: "A különbség a felszerelésben és a rutinban van:",
+            a_myself_list: `<ul>
+                                <li>Rétegvastagság-mérő (1 mikron pontosság)</li>
+                                <li>Professzionális diagnosztikai műszerek</li>
+                                <li>Szakértő szem (csavarok, illesztések ellenőrzése)</li>
+                            </ul>`,
+            h_price: "Áraink",
+            p_hu: "Magyarország",
+            p_de: "Németország",
+            p_eu: "Európa",
+            p_req: "Kérésre",
+            p_note: "Kérjen pontos árajánlatot"
         }
-    </script>
+    };
+
+    function setLang(lang) {
+        const texts = translations[lang];
+        // Проходим по простым текстовым полям
+        for (let key in texts) {
+            const element = document.getElementById(key);
+            if (element) {
+                element.innerHTML = texts[key];
+            }
+        }
+        
+        // Переключаем активность кнопок
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        const langIndex = lang === 'ru' ? 0 : lang === 'en' ? 1 : 2;
+        document.querySelectorAll('.lang-btn')[langIndex].classList.add('active');
+    }
+</script>
+
 </body>
 </html>
