@@ -6,10 +6,8 @@
     
     <title>TrueCarSelect | Auto Inspection Europe</title>
 
-    <meta name="description" content="Профессиональный подбор и осмотр автомобилей в Европе (Венгрия, Германия). Проверка толщиномером, диагностика, авто под ключ. Professional car inspection and sourcing (Paint meter check). Professzionális autóvizsgálat és állapotfelmérés.">
-    
-    <meta name="keywords" content="автоподбор, осмотр автомобиля, толщиномер, покупка авто под ключ, Венгрия, Германия, Европа, car inspection, paint meter check, turnkey car sourcing, europe, hungary, germany, autóvizsgálat, állapotfelmérés, rétegvastagság mérés, autóvásárlás">
-    
+    <meta name="description" content="Профессиональный подбор и осмотр автомобилей в Европе (Венгрия, Германия). Проверка толщиномером, диагностика, авто под ключ. Professional car inspection. Professzionális autóvizsgálat.">
+    <meta name="keywords" content="автоподбор, осмотр автомобиля, толщиномер, покупка авто под ключ, Венгрия, Германия, Европа, car inspection, paint meter check, turnkey car sourcing, europe, hungary, germany, autóvizsgálat, állapotfelmérés, rétegvastagság mérés, gebrauchtwagen check">
     <meta name="author" content="TrueCarSelect">
 
     <meta property="og:title" content="TrueCarSelect | Автоподбор в Европе">
@@ -218,9 +216,10 @@
 
     <aside class="profile-card">
         <div class="lang-switch">
-            <button class="lang-btn active" onclick="setLang('ru')">RU</button>
-            <button class="lang-btn" onclick="setLang('en')">EN</button>
-            <button class="lang-btn" onclick="setLang('hu')">HU</button>
+            <button class="lang-btn" id="btn_ru" onclick="setLang('ru')">RU</button>
+            <button class="lang-btn" id="btn_en" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" id="btn_de" onclick="setLang('de')">DE</button>
+            <button class="lang-btn" id="btn_hu" onclick="setLang('hu')">HU</button>
         </div>
 
         <img src="avatar.jpg" alt="TrueCarSelect Logo" class="avatar">
@@ -523,13 +522,73 @@
             p_eu: "Európa",
             p_req: "Kérésre",
             p_disclaimer: `<b>Mitől függ az ár?</b><br>A végösszeg függ a <b>távolságtól</b> (kiszállási költség) és az átvizsgálás <b>bonyolultságától</b> (autó kategóriája, motor típusa, elektronika mennyisége). Kérjen pontos árajánlatot.`
+        },
+        de: {
+            t_role: "Professionelle Autosuche",
+            t_manager: "Manager Valeriy Kuzmin",
+            t_exp_team: "Team-Erfahrung — 10+ Jahre.",
+            t_exp_lead: "Experten — 20+ Jahre.",
+            btn_wa: "WhatsApp schreiben",
+            btn_call: "Anrufen",
+            h_why: "Warum wir?",
+            txt_why: `<p>Sie können ein Auto selbst kaufen, aber das birgt Risiken. Wir helfen Ihnen:</p>
+                      <ul>
+                          <li>Schutz vor Betrug durch Händler und Wiederverkäufer</li>
+                          <li>Geprüfte und ehrliche Verkäufer zu finden</li>
+                          <li>Persönliche Inspektion des Fahrzeugs</li>
+                          <li>Überprüfung, ob der Zustand der Beschreibung entspricht</li>
+                          <li>Aufdeckung von: versteckten Schäden, ausgetauschten Teilen, Tacho-Manipulation</li>
+                          <li>Besseren Preis aushandeln und unnötige Zusatzleistungen vermeiden.</li>
+                      </ul>
+                      <p><strong>Sie kaufen nicht nur ein Auto – Sie kaufen Sicherheit.</strong></p>`,
+            
+            h_services: "Unsere Dienstleistungen",
+            srv_1_name: "🚗 Einmalige Inspektion",
+            srv_1_desc: "Expertenbesuch bei einem konkreten Fahrzeug. Kompletter Check von Karosserie, Elektronik, Probefahrt. Wir stellen ein vollständiges Foto/Video-Paket per Google Drive zur Verfügung.",
+            srv_2_name: "🔑 Komplettservice",
+            srv_2_desc: "Vollständige Suche nach Ihren Kriterien. Wir filtern Anzeigen, telefonieren mit Händlern in ganz Europa, prüfen die Historie und verhandeln.",
+            srv_2_note: "* Anfahrtskosten und Logistik werden separat berechnet.",
+
+            h_inspect: "Warum ist eine Inspektion nötig?",
+            txt_inspect: `<p>Eine professionelle Inspektion ist notwendig, um:</p>
+                          <ul>
+                              <li>Den tatsächlichen technischen Zustand zu verifizieren und den Preis zu rechtfertigen</li>
+                              <li>Verkäufer zu vermeiden, die Schäden oder eine problematische Historie verbergen</li>
+                          </ul>
+                          <p><strong>Wenn Sie blind vertrauen, kaufen Sie oft versteckte Mängel mit. Beim späteren Wiederverkauf mindern diese den Wert drastisch.</strong></p>`,
+            h_faq: "Häufige Fragen",
+            q_damaged: "Suchen Sie ein günstigeres Unfallauto?",
+            a_damaged: `<p>Auch hier helfen wir. Unsere Aufgabe ist es festzustellen:</p>
+                        <ul>
+                            <li>Wie schwer der Schaden war</li>
+                            <li>Ob tragende Teile betroffen sind</li>
+                            <li>Ob das Auto sein Geld wert ist</li>
+                            <li>Ob die Reparatur teurer wird als erwartet</li>
+                        </ul>
+                        <p><strong>Sie erhalten Klarheit: Ist es eine kluge Ersparnis oder ein teurer Fehler.</strong></p>`,
+            q_myself: "Warum nicht selbst machen?",
+            a_myself: `<p>Wir vertrauen unseren Kunden, aber es gibt einen Unterschied zwischen einem Blick und einer Expertise.</p>
+                       <p>Unsere Spezialisten:</p>
+                       <ul>
+                           <li>Nutzen Lackschichtenmessgeräte (1 Mikron Genauigkeit)</li>
+                           <li>Führen Computerdiagnose aller elektronischen Systeme durch</li>
+                           <li>Arbeiten mit teurem Equipment, das sich für eine einmalige Prüfung nicht lohnt</li>
+                           <li>Verlassen sich auf jahrelange Erfahrung</li>
+                       </ul>
+                       <p>Sie bemerken, was ein normaler Käufer übersieht: Spuren von Demontage, gedrehte Schrauben, nicht originale Teile.</p>
+                       <p><strong>Statt für die 'Katze im Sack' in eine andere Stadt zu reisen, erledigen wir das für Sie.</strong></p>`,
+            p_hu: "Ungarn",
+            p_de: "Deutschland",
+            p_eu: "Europa",
+            p_req: "Auf Anfrage",
+            p_disclaimer: `<b>Warum die Preisspanne?</b><br>Der Endpreis hängt von der <b>Entfernung</b> zum Fahrzeug (Logistik) und der <b>Komplexität</b> der Inspektion ab. Kontaktieren Sie uns für ein genaues Angebot.`
         }
     };
 
     function setLang(lang) {
         const texts = translations[lang];
         
-        // Обновляем простые ID
+        // Обновляем текст
         for (let key in texts) {
             const element = document.getElementById(key);
             if (element) {
@@ -537,11 +596,38 @@
             }
         }
         
-        // Переключаем кнопки
-        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        const langIndex = lang === 'ru' ? 0 : lang === 'en' ? 1 : 2;
-        document.querySelectorAll('.lang-btn')[langIndex].classList.add('active');
+        // Обновляем кнопки
+        const buttons = document.querySelectorAll('.lang-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        // Находим нужную кнопку и активируем
+        const activeBtn = document.getElementById('btn_' + lang);
+        if (activeBtn) activeBtn.classList.add('active');
+
+        // Сохраняем язык в <html> для правильной работы браузера
+        document.documentElement.lang = lang;
     }
+
+    // АВТОМАТИЧЕСКОЕ ОПРЕДЕЛЕНИЕ ЯЗЫКА
+    function detectAndSetLanguage() {
+        // Получаем язык браузера (например "hu-HU" или "de-DE")
+        const userLang = navigator.language || navigator.userLanguage; 
+        
+        if (userLang.startsWith('hu')) {
+            setLang('hu');
+        } else if (userLang.startsWith('de')) {
+            setLang('de');
+        } else if (userLang.startsWith('ru')) {
+            setLang('ru');
+        } else {
+            // Во всех остальных случаях (США, Франция, Китай и т.д.) включаем Английский
+            setLang('en');
+        }
+    }
+
+    // Запускаем при загрузке страницы
+    detectAndSetLanguage();
+
 </script>
 
 </body>
