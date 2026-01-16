@@ -45,30 +45,34 @@
             flex-direction: column;
         }
 
-        /* Контейнер для основного контента (кроме шапки и футера) */
+        /* Контейнер для основного контента */
         .content-container {
             width: 100%;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0 20px 40px; /* Убрал верхний отступ, так как шапка наезжает */
             display: flex;
             flex-direction: column;
             gap: 40px;
             flex: 1;
         }
 
-        /* === НОВАЯ ШАПКА (HERO BANNER) === */
+        /* === ШАПКА (HERO BANNER) === */
         .hero-header {
             position: relative;
-            /* Сюда вставь ссылку на свое фото M3 */
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('header_m3.jpg');
+            /* ССЫЛКА НА ФОТО (Заменишь на свою header_m3.jpg) */
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://i.imgur.com/8Q0VqGf.jpeg');
             background-size: cover;
             background-position: center;
-            /* Высота шапки */
-            padding: 80px 20px 100px; /* Сверху поменьше, снизу побольше воздуха */
+            
+            /* ВАЖНО: Большой отступ снизу для "воздуха" */
+            padding: 80px 20px 180px; 
+            
             text-align: center;
-            color: white; /* Весь текст в шапке белый */
-            margin-bottom: -40px; /* Отрицательный отступ, чтобы тарифы "наехали" на шапку */
+            color: white;
+            
+            /* Карточки заедут на фото на 80px */
+            margin-bottom: -80px; 
         }
 
         .hero-content {
@@ -84,17 +88,15 @@
             text-transform: uppercase;
         }
         
-        /* Подзаголовок (роль) */
         .hero-subtitle {
             font-size: 18px;
             font-weight: 600;
-            color: #eee; /* Чуть светлее белого */
+            color: #eee;
             margin-bottom: 5px;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        /* Имя менеджера */
         .hero-manager {
              font-size: 16px;
              font-weight: 500;
@@ -102,25 +104,23 @@
              margin-bottom: 30px;
         }
 
-        /* Переключатель языков в шапке */
+        /* Переключатель языков */
         .lang-switch-hero { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
         .lang-btn-hero {
-            background: rgba(255,255,255,0.1); /* Полупрозрачные кнопки */
+            background: rgba(255,255,255,0.1);
             border: 1px solid rgba(255,255,255,0.3);
             color: white; font-weight: 600; cursor: pointer;
             padding: 6px 12px; border-radius: 8px; transition: 0.3s; font-size: 14px;
         }
-        /* Активная кнопка языка - красная или синяя */
         .lang-btn-hero.active { background-color: var(--accent-blue); border-color: var(--accent-blue); }
 
-        /* Кнопки связи в шапке */
+        /* Кнопки связи */
         .contact-buttons-hero { display: flex; justify-content: center; gap: 15px; margin-top: 30px; flex-wrap: wrap; }
         .btn-hero {
             padding: 14px 28px; border-radius: 50px; font-weight: 700;
             text-decoration: none; transition: 0.3s; font-size: 16px;
         }
         .btn-wa-hero { background-color: var(--accent-red); color: white; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.5); border: none;}
-        /* Кнопка позвонить - белая рамка */
         .btn-call-hero { background-color: transparent; color: white; border: 2px solid white; }
         .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
@@ -128,8 +128,8 @@
         /* === ТАРИФЫ === */
         .tariffs-section {
             display: flex; flex-direction: column; gap: 30px;
-            position: relative; /* Чтобы работал z-index */
-            z-index: 10; /* Поднимаем тарифы над фоном шапки */
+            position: relative;
+            z-index: 10; /* Поверх фона */
         }
         @media (min-width: 768px) { .tariffs-section { flex-direction: row; align-items: stretch; } }
 
@@ -210,10 +210,11 @@
         .back-to-top:hover { background: #222; }
         .copyright { color: #555; font-size: 12px; margin-top: 40px; }
 
-        /* Адаптив для мобилок - уменьшаем шрифт заголовка */
+        /* Адаптив */
         @media (max-width: 480px) {
             .hero-title { font-size: 32px; }
-            .hero-header { padding: 60px 20px 80px; }
+            /* Для мобилок отступы чуть меньше, но воздух все равно оставляем */
+            .hero-header { padding: 60px 20px 140px; margin-bottom: -60px; }
         }
 
     </style>
