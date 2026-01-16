@@ -53,7 +53,7 @@
             display: flex;
             flex-direction: column;
             gap: 40px;
-            flex: 1; /* Растягиваем контент, чтобы футер был внизу */
+            flex: 1;
         }
 
         /* === ШАПКА === */
@@ -184,7 +184,7 @@
 
         <img src="avatar.jpg" alt="Logo" class="avatar">
         <h1>TrueCarSelect</h1>
-        <p class="subtitle" id="t_role">Профессиональный автоподбор</p>
+        <p class="subtitle" id="t_role">Профессиональный автоподбор и осмотр</p>
         <div class="manager-name" id="t_manager">Менеджер Valeriy Kuzmin</div>
 
         <div class="contact-buttons">
@@ -279,16 +279,16 @@
 </div>
 
 <footer class="footer">
-    <div id="f_cta" class="footer-cta">Смело пишите, звоните и приходите к нам.</div>
-    <div id="f_cta_red" class="footer-cta-red">Мы нацелены на продуктивное сотрудничество.</div>
+    <div id="f_cta" class="footer-cta">Свяжитесь с нами для консультации.</div>
+    <div id="f_cta_red" class="footer-cta-red">Мы работаем в ваших интересах.</div>
     
     <div class="footer-info">
         1091 Budapest, Üllői út 5.<br>
-        Телефон: <a href="tel:+36205109369">+36 20 510 9369</a><br>
+        <span id="f_phone_label">Телефон</span>: <a href="tel:+36205109369">+36 20 510 9369</a><br>
         Email: <a href="mailto:valeriy@truecarselect.me">valeriy@truecarselect.me</a>
     </div>
 
-    <a href="#top" class="back-to-top" id="btn_top">Back to top ↑</a>
+    <a href="#top" class="back-to-top" id="btn_top">Наверх ↑</a>
     
     <div class="copyright">© 2025 TrueCarSelect. All rights reserved.</div>
 </footer>
@@ -297,7 +297,7 @@
     // ПЕРЕВОДЫ
     const translations = {
         ru: {
-            t_role: "Профессиональный автоподбор",
+            t_role: "Профессиональный автоподбор и диагностика",
             t_manager: "Менеджер Valeriy Kuzmin",
             btn_wa: "Написать в WhatsApp",
             btn_call: "Позвонить",
@@ -324,12 +324,13 @@
             q_myself: "Почему я не могу сделать это сам?",
             a_myself: `<p>Есть разница между осмотром «на глаз» и профессиональной экспертизой. Наши специалисты используют оборудование, которое измеряет толщину ЛКП с точностью до микрона, и проводят компьютерную диагностику всех систем.</p><p>Они замечают то, что обычный покупатель не увидит: следы разборки салона, скрученные болты, неоригинальные элементы.</p><p><strong>Вместо того чтобы ехать в другой город за «котом в мешке», мы сделаем это за вас.</strong></p>`,
             
-            f_cta: "Смело пишите, звоните и приходите к нам.",
-            f_cta_red: "Мы нацелены на продуктивное сотрудничество.",
+            f_cta: "Свяжитесь с нами любым удобным способом.",
+            f_cta_red: "Мы работаем в ваших интересах.",
+            f_phone_label: "Телефон",
             btn_top: "Наверх ↑"
         },
         en: {
-            t_role: "Professional Car Sourcing",
+            t_role: "Professional Car Inspection & Sourcing",
             t_manager: "Manager Valeriy Kuzmin",
             btn_wa: "Contact via WhatsApp",
             btn_call: "Call Us",
@@ -340,8 +341,8 @@
             srv_1_note: "*Final price depends on distance and car complexity.",
             btn_order_1: "ORDER INSPECTION",
 
-            srv_2_title: "TURNKEY SOURCING",
-            srv_2_subtitle: "Fixed service fee for the full search cycle.",
+            srv_2_title: "FULL SERVICE CAR BUYING",
+            srv_2_subtitle: "Fixed service fee for the full sourcing process.",
             srv_2_list: `<p>We will find the best car according to your criteria until the result is achieved.</p><ul><li>Searching ads across Europe</li><li>Calling dealers & initial check</li><li>Selecting best options for inspection</li><li>Organizing diagnostics</li><li>Maximum price negotiation</li><li>Deal support</li></ul>`,
             srv_2_note: "*Inspection trips and delivery are paid separately.",
             btn_order_2: "ORDER SOURCING",
@@ -356,12 +357,13 @@
             q_myself: "Why not do it myself?",
             a_myself: `<p>We use professional equipment (paint meters, diagnostics) and years of experience to spot what regular buyers miss: signs of disassembly, non-original parts.</p><p><strong>Instead of traveling for a "pig in a poke", we do it for you.</strong></p>`,
             
-            f_cta: "Feel free to write, call, or visit us.",
-            f_cta_red: "We aim for productive cooperation.",
+            f_cta: "Contact us for a consultation.",
+            f_cta_red: "We represent your interests, not the seller's.",
+            f_phone_label: "Phone",
             btn_top: "Back to top ↑"
         },
         de: {
-            t_role: "Professionelle Autosuche",
+            t_role: "Fahrzeugprüfung & Kaufberatung",
             t_manager: "Manager Valeriy Kuzmin",
             btn_wa: "WhatsApp schreiben",
             btn_call: "Anrufen",
@@ -372,7 +374,7 @@
             srv_1_note: "*Endpreis hängt von Entfernung und Fahrzeugkomplexität ab.",
             btn_order_1: "INSPEKTION BESTELLEN",
 
-            srv_2_title: "KOMPLETTSERVICE",
+            srv_2_title: "AUTO-KAUFBEGLEITUNG (FULL SERVICE)",
             srv_2_subtitle: "Feste Servicegebühr für den gesamten Suchzyklus.",
             srv_2_list: `<p>Wir finden das beste Auto nach Ihren Kriterien bis zum Ergebnis.</p><ul><li>Suche nach Anzeigen in ganz Europa</li><li>Händleranrufe & Erstprüfung</li><li>Auswahl der besten Optionen zur Inspektion</li><li>Organisation der Diagnostik</li><li>Maximale Preisverhandlung</li><li>Begleitung des Geschäfts</li></ul>`,
             srv_2_note: "*Inspektionsfahrten und Lieferung werden separat bezahlt.",
@@ -388,12 +390,13 @@
             q_myself: "Warum nicht selbst machen?",
             a_myself: `<p>Wir nutzen Profi-Equipment (Lackmesser, Diagnose) und Erfahrung, um zu sehen, was Laien übersehen.</p><p><strong>Wir erledigen die Arbeit vor Ort für Sie.</strong></p>`,
             
-            f_cta: "Schreiben Sie uns, rufen Sie an oder besuchen Sie uns.",
-            f_cta_red: "Wir zielen auf eine produktive Zusammenarbeit ab.",
+            f_cta: "Kontaktieren Sie uns unverbindlich.",
+            f_cta_red: "Wir sind Ihr Partner beim Autokauf.",
+            f_phone_label: "Telefon",
             btn_top: "Nach oben ↑"
         },
         hu: {
-            t_role: "Professzionális Autóvizsgálat",
+            t_role: "Professzionális Autóvizsgálat és Beszerzés",
             t_manager: "Menedzser Valeriy Kuzmin",
             btn_wa: "Írjon WhatsApp-on",
             btn_call: "Hívás",
@@ -404,7 +407,7 @@
             srv_1_note: "*A végső ár a távolságtól és az autó bonyolultságától függ.",
             btn_order_1: "VIZSGÁLAT RENDELÉSE",
 
-            srv_2_title: "KULCSRAKÉSZ KERESÉS",
+            srv_2_title: "TELJES KÖRŰ AUTÓBESZERZÉS",
             srv_2_subtitle: "Fix szolgáltatási díj a teljes keresési ciklusra.",
             srv_2_list: `<p>Megtaláljuk a legjobb autót az Ön igényei alapján az eredményig.</p><ul><li>Hirdetések keresése Európa-szerte</li><li>Kereskedők felhívása és elsődleges ellenőrzés</li><li>A legjobb lehetőségek kiválasztása vizsgálatra</li><li>Diagnosztika megszervezése</li><li>Maximális alkudozás</li><li>Ügylet kísérése</li></ul>`,
             srv_2_note: "*A kiszállások és a szállítás külön fizetendő.",
@@ -420,8 +423,9 @@
             q_myself: "Miért ne csináljam magam?",
             a_myself: `<p>Profi felszerelést (rétegvastagság-mérő, diagnosztika) és tapasztalatot használunk, hogy észrevegyük, amit a laikusok nem.</p><p><strong>Mi elvégezzük Ön helyett a munkát a helyszínen.</strong></p>`,
             
-            f_cta: "Bátran írjon, hívjon vagy látogasson el hozzánk.",
-            f_cta_red: "Célunk a produktív együttműködés.",
+            f_cta: "Vegye fel velünk a kapcsolatot bizalommal.",
+            f_cta_red: "Mi az Ön érdekeit képviseljük.",
+            f_phone_label: "Telefon",
             btn_top: "Vissza a tetejére ↑"
         }
     };
@@ -430,7 +434,14 @@
         const texts = translations[lang];
         for (let key in texts) {
             const element = document.getElementById(key);
-            if (element) element.innerHTML = texts[key];
+            if (element) {
+                // Для списков используем innerHTML, для остального textContent, если там нет тегов
+                if (key.includes('_list') || key.includes('txt_') || key.includes('a_')) {
+                     element.innerHTML = texts[key];
+                } else {
+                     element.innerHTML = texts[key];
+                }
+            }
         }
         const buttons = document.querySelectorAll('.lang-btn');
         buttons.forEach(btn => btn.classList.remove('active'));
