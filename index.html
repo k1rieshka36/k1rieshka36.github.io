@@ -19,7 +19,7 @@
     <style>
         /* СТИЛИ */
         :root {
-            --bg-color: #f8f9fa;
+            --bg-color: #f8f9fa; /* Цвет фона сайта (светло-серый) */
             --card-bg: #ffffff;
             --text-main: #212529;
             --text-sec: #6c757d;
@@ -50,22 +50,32 @@
             width: 100%;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 0 20px 40px; /* Убрал верхний отступ, так как шапка наезжает */
+            padding: 0 20px 40px;
             display: flex;
             flex-direction: column;
             gap: 40px;
             flex: 1;
         }
 
-        /* === ШАПКА (HERO BANNER) === */
+        /* === ШАПКА (HERO BANNER) С ГРАДИЕНТОМ В ФОН САЙТА === */
         .hero-header {
             position: relative;
-            /* ССЫЛКА НА ФОТО (Заменишь на свою header_m3.jpg) */
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://i.imgur.com/8Q0VqGf.jpeg');
+            
+            /* ВНИМАНИЕ: ЗДЕСЬ ТЕПЕРЬ ТРИ СЛОЯ ФОНА (читаются сверху вниз) */
+            background-image: 
+                /* 1. НОВЫЙ СЛОЙ: Переход из прозрачного в цвет фона сайта (#f8f9fa) в нижней части */
+                linear-gradient(to bottom, rgba(248, 249, 250, 0) 60%, rgba(248, 249, 250, 1) 100%),
+                
+                /* 2. СТАРЫЙ СЛОЙ: Затемнение фото (оно никуда не делось!) */
+                linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
+                
+                /* 3. ФОТО: Ссылка на фото (заменишь на свою header_m3.jpg) */
+                url('https://i.imgur.com/8Q0VqGf.jpeg');
+                
             background-size: cover;
             background-position: center;
             
-            /* ВАЖНО: Большой отступ снизу для "воздуха" */
+            /* Большой отступ снизу для "воздуха" */
             padding: 80px 20px 180px; 
             
             text-align: center;
@@ -213,7 +223,6 @@
         /* Адаптив */
         @media (max-width: 480px) {
             .hero-title { font-size: 32px; }
-            /* Для мобилок отступы чуть меньше, но воздух все равно оставляем */
             .hero-header { padding: 60px 20px 140px; margin-bottom: -60px; }
         }
 
