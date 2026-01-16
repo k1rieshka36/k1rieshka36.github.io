@@ -45,7 +45,8 @@
             flex-direction: column;
         }
 
-        .main-container {
+        /* Контейнер для основного контента (кроме шапки и футера) */
+        .content-container {
             width: 100%;
             max-width: 1000px;
             margin: 0 auto;
@@ -56,39 +57,80 @@
             flex: 1;
         }
 
-        /* === ШАПКА === */
-        .header-profile { text-align: center; margin-bottom: 20px; }
-        .avatar {
-            width: 120px; height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-red);
-            margin-bottom: 15px;
-            box-shadow: var(--shadow);
+        /* === НОВАЯ ШАПКА (HERO BANNER) === */
+        .hero-header {
+            position: relative;
+            /* Сюда вставь ссылку на свое фото M3 */
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://i.imgur.com/8Q0VqGf.jpeg');
+            background-size: cover;
+            background-position: center;
+            /* Высота шапки */
+            padding: 80px 20px 100px; /* Сверху поменьше, снизу побольше воздуха */
+            text-align: center;
+            color: white; /* Весь текст в шапке белый */
+            margin-bottom: -40px; /* Отрицательный отступ, чтобы тарифы "наехали" на шапку */
         }
-        h1 { margin: 10px 0 5px; font-size: 28px; font-weight: 800; color: var(--text-main); }
-        .subtitle { color: var(--accent-red); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
-        .manager-name { font-weight: 600; margin-bottom: 15px; color: var(--text-sec); }
 
-        .lang-switch { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
-        .lang-btn {
-            background: transparent; border: 2px solid #e9ecef;
-            color: var(--text-sec); font-weight: 600; cursor: pointer;
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 900;
+            margin: 20px 0 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        /* Подзаголовок (роль) */
+        .hero-subtitle {
+            font-size: 18px;
+            font-weight: 600;
+            color: #eee; /* Чуть светлее белого */
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Имя менеджера */
+        .hero-manager {
+             font-size: 16px;
+             font-weight: 500;
+             color: #ccc;
+             margin-bottom: 30px;
+        }
+
+        /* Переключатель языков в шапке */
+        .lang-switch-hero { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .lang-btn-hero {
+            background: rgba(255,255,255,0.1); /* Полупрозрачные кнопки */
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white; font-weight: 600; cursor: pointer;
             padding: 6px 12px; border-radius: 8px; transition: 0.3s; font-size: 14px;
         }
-        .lang-btn.active { background-color: var(--accent-blue); color: white; border-color: var(--accent-blue); }
+        /* Активная кнопка языка - красная или синяя */
+        .lang-btn-hero.active { background-color: var(--accent-blue); border-color: var(--accent-blue); }
 
-        .contact-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
-        .btn-header {
-            padding: 12px 24px; border-radius: 50px; font-weight: 700;
-            text-decoration: none; transition: 0.3s; font-size: 15px;
+        /* Кнопки связи в шапке */
+        .contact-buttons-hero { display: flex; justify-content: center; gap: 15px; margin-top: 30px; flex-wrap: wrap; }
+        .btn-hero {
+            padding: 14px 28px; border-radius: 50px; font-weight: 700;
+            text-decoration: none; transition: 0.3s; font-size: 16px;
         }
-        .btn-wa-header { background-color: var(--accent-red); color: white; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3); }
-        .btn-call-header { background-color: transparent; color: var(--text-main); border: 2px solid var(--text-main); }
-        .btn-header:hover { transform: translateY(-2px); }
+        .btn-wa-hero { background-color: var(--accent-red); color: white; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.5); border: none;}
+        /* Кнопка позвонить - белая рамка */
+        .btn-call-hero { background-color: transparent; color: white; border: 2px solid white; }
+        .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
 
         /* === ТАРИФЫ === */
-        .tariffs-section { display: flex; flex-direction: column; gap: 30px; }
+        .tariffs-section {
+            display: flex; flex-direction: column; gap: 30px;
+            position: relative; /* Чтобы работал z-index */
+            z-index: 10; /* Поднимаем тарифы над фоном шапки */
+        }
         @media (min-width: 768px) { .tariffs-section { flex-direction: row; align-items: stretch; } }
 
         .tariff-card {
@@ -168,30 +210,37 @@
         .back-to-top:hover { background: #222; }
         .copyright { color: #555; font-size: 12px; margin-top: 40px; }
 
+        /* Адаптив для мобилок - уменьшаем шрифт заголовка */
+        @media (max-width: 480px) {
+            .hero-title { font-size: 32px; }
+            .hero-header { padding: 60px 20px 80px; }
+        }
+
     </style>
 </head>
 <body>
 
-<div class="main-container">
-
-    <header class="header-profile" id="top">
-        <div class="lang-switch">
-            <button class="lang-btn" id="btn_ru" onclick="setLang('ru')">RU</button>
-            <button class="lang-btn" id="btn_en" onclick="setLang('en')">EN</button>
-            <button class="lang-btn" id="btn_de" onclick="setLang('de')">DE</button>
-            <button class="lang-btn" id="btn_hu" onclick="setLang('hu')">HU</button>
+<header class="hero-header" id="top">
+    <div class="hero-content">
+        <div class="lang-switch-hero">
+            <button class="lang-btn-hero" id="btn_ru" onclick="setLang('ru')">RU</button>
+            <button class="lang-btn-hero" id="btn_en" onclick="setLang('en')">EN</button>
+            <button class="lang-btn-hero" id="btn_de" onclick="setLang('de')">DE</button>
+            <button class="lang-btn-hero" id="btn_hu" onclick="setLang('hu')">HU</button>
         </div>
 
-        <img src="avatar.jpg" alt="Logo" class="avatar">
-        <h1>TrueCarSelect</h1>
-        <p class="subtitle" id="t_role">Профессиональный автоподбор и осмотр</p>
-        <div class="manager-name" id="t_manager">Менеджер Valeriy Kuzmin</div>
+        <div class="hero-subtitle" id="t_role">Профессиональный автоподбор и диагностика</div>
+        <h1 class="hero-title">TrueCarSelect</h1>
+        <div class="hero-manager" id="t_manager">Менеджер Valeriy Kuzmin</div>
 
-        <div class="contact-buttons">
-            <a href="https://wa.me/36205109369" class="btn-header btn-wa-header" id="btn_wa">WhatsApp</a>
-            <a href="tel:+36205109369" class="btn-header btn-call-header" id="btn_call">Позвонить</a>
+        <div class="contact-buttons-hero">
+            <a href="https://wa.me/36205109369" class="btn-hero btn-wa-hero" id="btn_wa">WhatsApp</a>
+            <a href="tel:+36205109369" class="btn-hero btn-call-hero" id="btn_call">Позвонить</a>
         </div>
-    </header>
+    </div>
+</header>
+
+<div class="content-container">
 
     <section class="tariffs-section">
         <div class="tariff-card">
@@ -324,7 +373,7 @@
             q_myself: "Почему я не могу сделать это сам?",
             a_myself: `<p>Есть разница между осмотром «на глаз» и профессиональной экспертизой. Наши специалисты используют оборудование, которое измеряет толщину ЛКП с точностью до микрона, и проводят компьютерную диагностику всех систем.</p><p>Они замечают то, что обычный покупатель не увидит: следы разборки салона, скрученные болты, неоригинальные элементы.</p><p><strong>Вместо того чтобы ехать в другой город за «котом в мешке», мы сделаем это за вас.</strong></p>`,
             
-            f_cta: "Свяжитесь с нами любым удобным способом.",
+            f_cta: "Свяжитесь с нами для консультации.",
             f_cta_red: "Мы работаем в ваших интересах.",
             f_phone_label: "Телефон",
             btn_top: "Наверх ↑"
@@ -435,7 +484,6 @@
         for (let key in texts) {
             const element = document.getElementById(key);
             if (element) {
-                // Для списков используем innerHTML, для остального textContent, если там нет тегов
                 if (key.includes('_list') || key.includes('txt_') || key.includes('a_')) {
                      element.innerHTML = texts[key];
                 } else {
@@ -443,7 +491,7 @@
                 }
             }
         }
-        const buttons = document.querySelectorAll('.lang-btn');
+        const buttons = document.querySelectorAll('.lang-btn-hero');
         buttons.forEach(btn => btn.classList.remove('active'));
         document.getElementById('btn_' + lang).classList.add('active');
         document.documentElement.lang = lang;
