@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrueCarSelect | Auto Inspection Europe</title>
+    <title>TrueCarSelect | Valeriy Kuzmin</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -20,14 +20,12 @@
 
         body {
             background-color: var(--bg-color);
-            /* ТЕМНАЯ ВУАЛЬ + ТВОЕ ФОТО */
-            /* 0.85 = 85% темноты. Если захочешь светлее, поменяй на 0.7 */
+            /* Убедись, что файл фона на GitHub называется background.JPG (большими буквами) или поменяй тут на .jpg */
             background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('background.JPG');
             
-            /* Настройки фона */
-            background-size: cover;       /* Растягиваем на весь экран */
-            background-position: center;  /* Центрируем */
-            background-attachment: fixed; /* Фон стоит на месте при прокрутке */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             background-repeat: no-repeat;
 
             font-family: 'Montserrat', sans-serif;
@@ -51,7 +49,6 @@
 
         /* ЛЕВАЯ КОЛОНКА */
         .profile-card {
-            /* Добавим легкую прозрачность карточкам, чтобы фон просвечивал чуть-чуть */
             background: rgba(30, 30, 30, 0.95);
             padding: 30px;
             border-radius: 24px;
@@ -69,7 +66,7 @@
         }
 
         .content-card {
-            background: rgba(30, 30, 30, 0.95); /* Легкая прозрачность */
+            background: rgba(30, 30, 30, 0.95);
             padding: 30px;
             border-radius: 24px;
             border: 1px solid var(--border-color);
@@ -103,8 +100,9 @@
             margin-bottom: 20px;
         }
         
-        h1 { margin: 10px 0; font-size: 26px; font-weight: 800; }
-        .subtitle { color: var(--accent-blue); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        h1 { margin: 10px 0 5px; font-size: 26px; font-weight: 800; }
+        .subtitle { color: var(--accent-blue); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .manager-name { color: white; font-size: 15px; font-weight: 500; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 15px; display: inline-block;}
         
         .lang-switch {
             display: flex;
@@ -211,17 +209,21 @@
             <button class="lang-btn" onclick="setLang('hu')">HU</button>
         </div>
 
-        <img src="avatar.jpg" alt="Avatar" class="avatar">
+        <img src="avatar.jpg" alt="TrueCarSelect Logo" class="avatar">
+        
         <h1>TrueCarSelect</h1>
         <p class="subtitle" id="t_role">Профессиональный автоподбор</p>
+        
+        <div class="manager-name" id="t_manager">Менеджер Valeriy Kuzmin</div>
         
         <p style="color: #9ca3af; font-size: 14px; margin-bottom: 25px;">
             <span id="t_exp_team">Опыт команды — 10+ лет.</span><br>
             <span id="t_exp_lead">Эксперты — 20+ лет.</span>
         </p>
 
-        <a href="https://wa.me/36300000000" class="btn btn-whatsapp" id="btn_wa" target="_blank">WhatsApp</a>
-        <a href="tel:+36300000000" class="btn btn-phone" id="btn_call">Позвонить</a>
+        <a href="https://wa.me/36205109369" class="btn btn-whatsapp" id="btn_wa" target="_blank">WhatsApp</a>
+        
+        <a href="tel:+36205109369" class="btn btn-phone" id="btn_call">Позвонить</a>
     </aside>
 
     <main class="content-area">
@@ -331,6 +333,7 @@
     const translations = {
         ru: {
             t_role: "Профессиональный автоподбор",
+            t_manager: "Менеджер Valeriy Kuzmin",
             t_exp_team: "Опыт команды — 10+ лет.",
             t_exp_lead: "Эксперты — 20+ лет.",
             btn_wa: "Написать в WhatsApp",
@@ -390,6 +393,7 @@
         },
         en: {
             t_role: "Professional Car Sourcing",
+            t_manager: "Manager Valeriy Kuzmin",
             t_exp_team: "Team experience — 10+ years.",
             t_exp_lead: "Lead experts — 20+ years.",
             btn_wa: "Contact via WhatsApp",
@@ -449,6 +453,7 @@
         },
         hu: {
             t_role: "Professzionális Autóvizsgálat",
+            t_manager: "Menedzser Valeriy Kuzmin",
             t_exp_team: "Csapat tapasztalat — 10+ év.",
             t_exp_lead: "Vezető szakértők — 20+ év.",
             btn_wa: "Írjon WhatsApp-on",
