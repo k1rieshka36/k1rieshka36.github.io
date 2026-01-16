@@ -1,36 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueCarSelect | Автоподбор в Европе</title>
+    <style>
+        body {
+            background-color: #121212;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Изменил, чтобы длинный сайт можно было скроллить */
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px 0;
+            line-height: 1.6;
+        }
+        .container {
+            background: #1e1e1e;
+            padding: 30px 20px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px; /* Оптимальная ширина для чтения */
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #007bff;
+            margin-bottom: 15px;
+        }
+        h1 { margin: 5px 0; font-size: 26px; font-weight: 700; color: #fff; }
+        .subtitle { color: #007bff; font-weight: 600; margin-top: 0; font-size: 16px; }
+        .intro-text { font-size: 14px; color: #cccccc; margin-bottom: 20px; }
+
+        /* Стили кнопок */
+        .btn {
+            display: block;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transition: transform 0.2s;
+        }
+        .btn:active { transform: scale(0.98); }
+        
+        .btn-whatsapp {
+            background-color: #25D366; /* Официальный цвет WhatsApp */
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        .btn-phone {
+            background-color: #333;
+            color: white;
+            border: 1px solid #444;
+        }
+
+        /* Блоки текста */
+        .section-title {
+            font-size: 18px;
+            color: #fff;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .info-block p {
+            font-size: 14px;
+            color: #bbbbbb;
+            margin-bottom: 15px;
+        }
+        .highlight { color: #fff; font-weight: bold; }
+        
+        /* Список цен */
+        .price-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .price-item {
+            background: #2a2a2a;
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+        .price-tag { color: #25D366; font-weight: bold; }
+    </style>
+</head>
 <body>
 
-    <div class="card">
-        <img src="avatar.jpg" alt="TrueCarSelect Logo" class="avatar">
-        
-        <h1>TrueCarSelect</h1>
-        <p style="font-weight: bold; color: #fff;">Профессиональный автоподбор в Венгрии и Европе</p>
-        <p style="font-size: 13px; max-width: 90%; margin: 0 auto 20px;">
-            Опыт более 10 лет. Проверяем ЛКП, электронику и юридическую чистоту. Торгуемся за вас.
+    <div class="container">
+        <div class="header">
+            <img src="avatar.jpg" alt="TrueCarSelect" class="avatar">
+            <h1>TrueCarSelect</h1>
+            <p class="subtitle">Профессиональный автоподбор</p>
+            <p class="intro-text">
+                Работаем в Венгрии и по всей Европе.<br>
+                Опыт команды — более 10 лет.<br>
+                Ведущие эксперты — 20+ лет в автобизнесе.
+            </p>
+            
+            <a href="https://wa.me/36300000000" class="btn btn-whatsapp" target="_blank">
+                Написать в WhatsApp
+            </a>
+            
+            <a href="tel:+36300000000" class="btn btn-phone">
+                Позвонить
+            </a>
+        </div>
+
+        <h2 class="section-title">Почему не стоит искать авто самому?</h2>
+        <div class="info-block">
+            <p><span class="highlight">🛡 Защита от обмана</span><br>
+            Мы спасаем вас от недобросовестных продавцов. Наши эксперты выявляют скрытые повреждения, скрученный пробег и замены запчастей, о которых молчат в объявлениях.</p>
+            
+            <p><span class="highlight">💰 Окупаемость услуги</span><br>
+            Мы знаем, как аргументированно торговаться. Часто скидка, которую мы получаем у продавца, полностью перекрывает стоимость наших услуг.</p>
+            
+            <p><span class="highlight">🔎 Профессиональный осмотр</span><br>
+            Обывателю сложно заметить подвох. Мы используем оборудование, измеряющее ЛКП с точностью до 1 микрометра, и компьютерную диагностику. Мы видим перекрасы, «распилы» и ошибки электроники.</p>
+        </div>
+
+        <h2 class="section-title">Ищете авто под восстановление?</h2>
+        <div class="info-block">
+            <p>Даже если вы ищете поврежденный автомобиль подешевле, важно знать <b>реальный</b> масштаб бедствия. Мы оценим повреждения, чтобы дешевая покупка не превратилась в бесконечный ремонт.</p>
+        </div>
+
+        <h2 class="section-title">Стоимость услуг</h2>
+        <ul class="price-list">
+            <li class="price-item">
+                <span>🇭🇺 Венгрия</span>
+                <span class="price-tag">150 - 350 €</span>
+            </li>
+            <li class="price-item">
+                <span>🇩🇪 Германия</span>
+                <span class="price-tag">300 - 450 €</span>
+            </li>
+            <li class="price-item">
+                <span>🇪🇺 Другие страны</span>
+                <span class="price-tag">По запросу</span>
+            </li>
+        </ul>
+        <p style="font-size: 12px; color: #666; text-align: center; margin-top: 10px;">
+            Для точного расчета стоимости свяжитесь с нами
         </p>
 
-        <a href="https://t.me/твойтелеграм" class="btn" target="_blank">Заказать подбор в Telegram</a>
-        
-        <hr style="border: 0; border-top: 1px solid #444; margin: 20px 0;">
+        <a href="https://wa.me/36300000000" class="btn btn-whatsapp" style="margin-top: 20px;">
+            Обсудить подбор в WhatsApp
+        </a>
 
-        <div style="text-align: left; margin-bottom: 20px;">
-            <h3 style="color: #007bff; font-size: 16px;">Почему выбирают нас?</h3>
-            <p style="font-size: 13px;">✅ <b>Экономим ваше время и деньги.</b> Часто торг с продавцом полностью покрывает стоимость наших услуг.</p>
-            <p style="font-size: 13px;">✅ <b>Профессиональное оборудование.</b> Толщиномеры и сканеры, которые видят то, что скрыто от глаз.</p>
-            <p style="font-size: 13px;">✅ <b>Безопасность.</b> Вы не купите «кота в мешке» с плохой историей или после ДТП.</p>
-        </div>
-
-        <div style="text-align: left;">
-            <h3 style="color: #007bff; font-size: 16px;">Стоимость осмотра:</h3>
-            <ul style="padding-left: 20px; font-size: 13px; color: #aaaaaa; list-style-type: none; margin: 0;">
-                <li style="margin-bottom: 5px;">🇭🇺 <b>Венгрия:</b> 150 - 350 €</li>
-                <li style="margin-bottom: 5px;">🇩🇪 <b>Германия:</b> 300 - 450 €</li>
-                <li>🇪🇺 <b>Европа:</b> По запросу</li>
-            </ul>
-        </div>
-        
-        <br>
-        <a href="mailto:email@example.com" class="btn" style="background: #444;">Написать на почту</a>
     </div>
 
 </body>
+</html>
