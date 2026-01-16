@@ -156,27 +156,35 @@
         }
         .service-title { font-size: 18px; font-weight: 700; color: white; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
         .service-price { color: var(--accent-green); font-size: 18px; font-weight: 800; margin-left: auto; }
-        .service-desc { font-size: 14px; color: #9ca3af; margin-bottom: 0; }
+        .service-desc { font-size: 14px; color: #9ca3af; margin-bottom: 15px; }
         .service-note { font-size: 12px; color: #6b7280; margin-top: 10px; font-style: italic; }
 
-        /* ЦЕНЫ */
+        /* ЦЕНЫ ВНУТРИ УСЛУГ */
+        .price-list-internal {
+            margin-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+        }
         .price-item {
             display: flex;
             justify-content: space-between;
-            background: rgba(255,255,255,0.03);
-            padding: 15px;
+            background: rgba(0,0,0,0.2); /* Чуть темнее фон для вложенных цен */
+            padding: 12px 15px;
             border-radius: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
         .price-val { color: var(--accent-green); font-weight: 700; }
+        
         .price-disclaimer {
-            font-size: 13px;
+            font-size: 12px;
             color: #9ca3af;
             background: rgba(59, 130, 246, 0.1);
-            padding: 15px;
+            padding: 12px;
             border-radius: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
             border-left: 3px solid var(--accent-blue);
+            line-height: 1.4;
         }
 
     </style>
@@ -215,6 +223,26 @@
                     <span id="srv_1_name">🚗 Разовый осмотр</span>
                 </div>
                 <p class="service-desc" id="srv_1_desc">Выезд эксперта к конкретному автомобилю. Полная проверка кузова, электроники, тест-драйв. После осмотра предоставляем полный пакет фото и видео на Гугл Диске или в любой удобной форме.</p>
+                
+                <div class="price-list-internal">
+                    <div class="price-item">
+                        <span>🇭🇺 <span id="p_hu">Венгрия</span></span>
+                        <span class="price-val">150 - 350 €</span>
+                    </div>
+                    <div class="price-item">
+                        <span>🇩🇪 <span id="p_de">Германия</span></span>
+                        <span class="price-val">300 - 450 €</span>
+                    </div>
+                    <div class="price-item">
+                        <span>🇪🇺 <span id="p_eu">Европа</span></span>
+                        <span class="price-val" id="p_req">По запросу</span>
+                    </div>
+                    
+                    <div class="price-disclaimer" id="p_disclaimer">
+                        <b>Почему разная цена?</b><br>
+                        Итоговая стоимость зависит от <b>расстояния</b> до автомобиля (логистика) и <b>сложности</b> осмотра (класс авто, тип двигателя, количество электроники). Свяжитесь с нами для точного расчета.
+                    </div>
+                </div>
             </div>
 
             <div class="service-box" style="border-color: var(--accent-blue);">
@@ -224,27 +252,6 @@
                 </div>
                 <p class="service-desc" id="srv_2_desc">Полный цикл поиска по вашим параметрам. Мы ищем объявления, прозваниваем дилеров по всей Европе, проверяем историю и торгуемся.</p>
                 <p class="service-note" id="srv_2_note">* Стоимость выезда на осмотр и логистика (доставка) оплачиваются отдельно.</p>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h2 id="h_price">Стоимость осмотра</h2>
-            <div class="price-item">
-                <span>🇭🇺 <span id="p_hu">Венгрия</span></span>
-                <span class="price-val">150 - 350 €</span>
-            </div>
-            <div class="price-item">
-                <span>🇩🇪 <span id="p_de">Германия</span></span>
-                <span class="price-val">300 - 450 €</span>
-            </div>
-            <div class="price-item">
-                <span>🇪🇺 <span id="p_eu">Европа</span></span>
-                <span class="price-val" id="p_req">По запросу</span>
-            </div>
-            
-            <div class="price-disclaimer" id="p_disclaimer">
-                <b>Почему разная цена?</b><br>
-                Итоговая стоимость зависит от <b>расстояния</b> до автомобиля (логистика) и <b>сложности</b> осмотра (класс авто, тип двигателя, количество электроники). Свяжитесь с нами для точного расчета.
             </div>
         </div>
 
@@ -331,7 +338,6 @@
             
             h_services: "Наши услуги",
             srv_1_name: "🚗 Разовый осмотр",
-            // Обновленное описание RU
             srv_1_desc: "Выезд эксперта к конкретному автомобилю. Полная проверка кузова, электроники, тест-драйв. После осмотра предоставляем полный пакет фото и видео на Гугл Диске или в любой удобной форме.",
             srv_2_name: "🔑 Подбор под ключ",
             srv_2_desc: "Полный цикл поиска по вашим параметрам. Мы ищем объявления, прозваниваем дилеров по всей Европе, проверяем историю и торгуемся.",
@@ -365,7 +371,6 @@
                        </ul>
                        <p>Они замечают то, что обычный покупатель не увидит: следы разборки салона, скрученные болты, неоригинальные элементы.</p>
                        <p><strong>Вместо того чтобы ехать в другой город или страну за «котом в мешке», мы сделаем это за вас и сэкономим ваши силы и деньги.</strong></p>`,
-            h_price: "Стоимость осмотра",
             p_hu: "Венгрия",
             p_de: "Германия",
             p_eu: "Европа",
@@ -392,7 +397,6 @@
             
             h_services: "Our Services",
             srv_1_name: "🚗 Single Inspection",
-            // Обновленное описание EN
             srv_1_desc: "Expert visit to a specific car. Full check of bodywork, electronics, test drive. We provide a full photo/video package via Google Drive or any convenient method.",
             srv_2_name: "🔑 Turnkey Sourcing",
             srv_2_desc: "Full cycle search based on your criteria. We filter ads, call dealers across Europe, check history, and negotiate.",
@@ -426,7 +430,6 @@
                        </ul>
                        <p>They notice what an ordinary buyer won't see: signs of interior disassembly, turned bolts, non-original parts.</p>
                        <p><strong>Instead of traveling to another city or country for a "pig in a poke", we do it for you, saving your time and money.</strong></p>`,
-            h_price: "Inspection Prices",
             p_hu: "Hungary",
             p_de: "Germany",
             p_eu: "Europe",
@@ -453,7 +456,6 @@
             
             h_services: "Szolgáltatásaink",
             srv_1_name: "🚗 Egyszeri átvizsgálás",
-            // Обновленное описание HU
             srv_1_desc: "Szakértői kiszállás egy adott autóhoz. Karosszéria, elektronika, próbaút. Teljes fotó- és videócsomagot küldünk Google Drive-on vagy más kényelmes módon.",
             srv_2_name: "🔑 Kulcsrakész keresés",
             srv_2_desc: "Teljes körű keresés az Ön igényei alapján. Szűrjük a hirdetéseket, telefonálunk Európa-szerte, ellenőrizzük az előéletet és alkudozunk.",
@@ -487,7 +489,6 @@
                        </ul>
                        <p>Észreveszik azt, amit egy átlagos vásárló nem: szétszerelt utastér nyomait, elfordult csavarokat, nem eredeti elemeket.</p>
                        <p><strong>Ahelyett, hogy másik városba vagy országba utazna „zsákbamacskáért”, mi elvégezzük a vizsgálatot, időt és pénzt spórolva Önnek.</strong></p>`,
-            h_price: "Áraink",
             p_hu: "Magyarország",
             p_de: "Németország",
             p_eu: "Európa",
